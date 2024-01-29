@@ -1,0 +1,248 @@
+@import '/src/variables';
+
+:host {
+  display: flex;
+  background: $background;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.path {
+  background: $background-path;
+  border-radius: 25px;
+  width: 100%;
+  margin: 18px 18px 18px 36px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  max-width: 536px;
+  flex: 1;
+
+   svg {
+    margin: 20px;
+    overflow: visible;
+    height: auto;
+    width: auto;
+   }
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  margin: 18px 36px 18px 18px;
+  font-weight: bold;
+  max-width: 536px;
+  font-size: 1rem;
+  flex: 1;
+
+  .alternatives {
+    display: contents;
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .statement {
+      text-transform: uppercase;
+    }
+
+    .alternative {
+      cursor: pointer;
+      background-color: $background-path;
+      color: $black;
+      border-radius: 15px;
+      padding: 0px 14px;
+      margin-bottom: 10px;
+      width: -webkit-fill-available;
+      text-transform: uppercase;
+    }
+    .alternative-selected {
+      background-color: $selected !important;
+    }
+
+    .alternative:hover {
+      background-color: #e2e2e2;
+    }
+
+    .hit {
+      background-color: $right !important;
+      color: $background-path;
+    }
+
+    .mistake {
+      background-color: $mistake !important;
+      color: $background-path;
+    }
+
+    .blocked {
+      cursor: no-drop;
+    }
+  }
+}
+
+.right {
+  fill: $right;
+}
+
+.mistake {
+  fill: $mistake;
+}
+
+.selected {
+  stroke-width: 15px;
+  stroke-width: 15px;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.ocult {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+button {
+  background-color: $right;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+  width: 140px;
+  font-size: 1rem;
+  color: #eee;
+  font-weight: bold;
+  height: 35px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-top: auto;
+}
+
+button:hover {
+  background-color: $right-hover;
+}
+
+.animation {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #eeeeeeeb;
+  width: -webkit-fill-available;
+  justify-content: space-around;
+  padding: 16px;
+
+  .message {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0;
+    text-align: -webkit-center;
+    top: -12%;
+    position: relative;
+  }
+}
+
+.bonus-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  border-radius: 25px;
+  text-align: center;
+  flex: 1;
+  padding: 12px;
+  justify-content: space-around;
+
+ p {
+  margin: 0px;
+ }
+
+ .bonus-subtitle {
+  margin-top: 10px;
+  font-size: 1.5rem;
+ }
+
+ ng-lottie {
+  display: flex;
+  place-content: center;
+  flex: 1;
+  cursor: pointer;
+ }
+}
+
+@media only screen and (max-width: 500px) {
+  :host {
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+  }
+
+  .path {
+    margin: 12px;
+    margin-bottom: 0px;
+    max-height: 45%;
+    justify-content: center;
+    width: -webkit-fill-available;
+  }
+
+  .question {
+    margin: 12px;
+    margin-top: 0px;
+    height: 100%;
+    max-height: 50%;
+    font-size: 12px;
+
+    .alternatives {
+      text-align: center;
+      .title {
+        font-size: 12px;
+      }
+      .alternative {
+        font-size: 10px;
+      }
+    }
+
+  }
+
+  button {
+    z-index: 2;
+  }
+
+  .animation {
+    position: fixed;
+    justify-content: space-evenly;
+    top: 0;
+  }
+
+  .bonus-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 0px;
+    padding: 16px 16px;
+    gap: 30px;
+    height: 100%;
+    justify-content: unset;
+
+    ng-lottie {
+      flex: 0;
+      width: 80%;
+      cursor: pointer;
+    }
+  }
+
+  .good-subject {
+    background-color: $background-blue;
+  }
+  .bad-subject {
+    background-color: $background;
+  }
+}
