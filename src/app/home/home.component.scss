@@ -1,21 +1,72 @@
 @import '/src/variables';
 
-.home {
+:host {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
 
-.home::before {
+:host::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: url('/assets/home.svg') no-repeat bottom right;
-  background-size: contain;
+  background: url('/assets/home.svg') no-repeat bottom right  $background-path;
   background-size: 40%;
   z-index: -1;
 }
 
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      font-size: 80px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: $primary-color;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 30px;
+      width: 60%;
+      text-align: center;
+    }
+  }
+
+  &__bottom-buton {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+  }
+}
+
+button {
+  background-color: $primary-color;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+  width: 200px;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  height: 40px;
+}
+
+button:hover {
+  background-color: $primary-color-hover;
+}
