@@ -11,8 +11,8 @@ import {
 import {ErrorStateMatcher} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { school } from 'src/assets/school';
-import { places } from 'src/assets/places';
+import { school } from 'src/utils/school';
+import { places } from 'src/utils/places';
 import { QuizService } from '../quiz/quiz.service';
 import { Router } from '@angular/router';
 import { CharacterTypeEnum } from 'src/interfaces/character.enum';

@@ -1,4 +1,4 @@
-<form [formGroup]="playerForm" (ngSubmit)="onSubmit()" class="example-form">
+<form [formGroup]="playerForm" class="example-form">
   <p class="title">Preencha os dados abaixo e escolha seu personagem:</p>
   <div class="form-content">
     <div class="input-content">
@@ -45,40 +45,43 @@
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.cat"
             (click)="chooseCharacter(CharacterTypeEnum.cat)">
-        <img class="gif" src="../../assets/cat.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/cat.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/cat.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/cat.png" alt="Static Image">
       </span>
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.frog"
             (click)="chooseCharacter(CharacterTypeEnum.frog)">
-        <img class="gif" src="../../assets/frog.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/frog.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/frog.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/frog.png" alt="Static Image">
       </span>
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.owl"
             (click)="chooseCharacter(CharacterTypeEnum.owl)">
-        <img class="gif" src="../../assets/owl.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/owl.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/owl.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/owl.png" alt="Static Image">
       </span>
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.parrot"
             (click)="chooseCharacter(CharacterTypeEnum.parrot)">
-        <img class="gif" src="../../assets/parrot.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/parrot.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/parrot.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/parrot.png" alt="Static Image">
       </span>
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.porcupine"
             (click)="chooseCharacter(CharacterTypeEnum.porcupine)">
-        <img class="gif" src="../../assets/porcupine.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/porcupine.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/porcupine.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/porcupine.png" alt="Static Image">
       </span>
       <span class="gif-container"
             [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.unicorn"
             (click)="chooseCharacter(CharacterTypeEnum.unicorn)">
-        <img class="gif" src="../../assets/unicorn.gif" alt="Animated GIF">
-        <img class="static" src="../../assets/unicorn.png" alt="Static Image">
+        <img class="gif" src="../../assets/animations/unicorn.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/animations/unicorn.png" alt="Static Image">
       </span>
     </div>
   </div>
-  <button type="submit" *ngIf="!playerForm.invalid">iniciar</button>
+  <div class="actions">
+    <button type="button" class="back" routerLink="/">VOLTAR</button>
+    <button type="submit" *ngIf="!playerForm.invalid" (click)="onSubmit()">CONTINUAR</button>
+  </div>
 </form>
