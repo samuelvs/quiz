@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { questions } from '../../assets/questions';
+import { questions } from '../../utils/questions';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 
@@ -7,7 +7,7 @@ import { AnimationItem } from 'lottie-web';
   providedIn: 'root'
 })
 export class QuizService {
-  private character: any;
+  character: any;
   private score: number[] = [0,0,0,0,0];
   private quiz: any = [];
   private pathStars: number[] = [6,12,18,24];
@@ -17,7 +17,7 @@ export class QuizService {
   private answerAnimationItem: AnimationItem;
   private bonusAnimationItem: AnimationItem;
   lottieOptions: AnimationOptions = {
-    path: './../../assets/starWin.json',
+    path: './../../assets/animations/starWin.json',
     autoplay: true,
     loop: true,
   };
@@ -83,10 +83,10 @@ export class QuizService {
     const star = document.getElementById(`star${this.getPathIndex()}`) as HTMLElement;
     star.style.display = 'block';
 
-    const audio = new Audio('./../../assets/right.mp3');
+    const audio = new Audio('./../../assets/sounds/right.mp3');
     audio.play();
 
-    this.updateAnimation({ path: './../../assets/starWin.json' });
+    this.updateAnimation({ path: './../../assets/animations/starWin.json' });
   }
 
   mistakeAnimmation(): void {
@@ -96,18 +96,18 @@ export class QuizService {
     const star = document.getElementById(`wrong${this.getPathIndex()}`) as HTMLElement;
     star.style.display = 'block';
 
-    const audio = new Audio('./../../assets/wrong.mp3');
+    const audio = new Audio('./../../assets/audios/wrong.mp3');
     audio.play();
 
-    this.updateAnimation({ path: './../../assets/wrong.json'});
+    this.updateAnimation({ path: './../../assets/animations/wrong.json'});
   }
 
   giftAnimation() {
-    const audio = new Audio('./../../assets/right.mp3');
+    const audio = new Audio('./../../assets/audios/right.mp3');
     audio.play();
 
     this.bonusStyles = { };
-    this.updateAnimation({ path: './../../assets/gift.json'});
+    this.updateAnimation({ path: './../../assets/animations/gift.json'});
   }
 
   bonusAnimation() {
@@ -116,11 +116,11 @@ export class QuizService {
     block.classList.add('right');
     block?.setAttribute('stroke', '#37B42C');
 
-    const audio = new Audio('./../../assets/right.mp3');
+    const audio = new Audio('./../../assets/audios/right.mp3');
     audio.play();
 
     this.bonusStyles = { width: '80%' };
-    this.updateAnimation({ path: './../../assets/bonus.json'});
+    this.updateAnimation({ path: './../../assets/animations/bonus.json'});
   }
 
   animationAnswerCreated(animationItem: AnimationItem): void {

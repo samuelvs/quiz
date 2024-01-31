@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { orientations } from 'src/utils/orientations';
 
 @Component({
   selector: 'app-orientations',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./orientations.component.scss']
 })
 export class OrientationsComponent {
+  orientationsArray = orientations;
 
 }

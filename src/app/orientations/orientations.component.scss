@@ -1,0 +1,89 @@
+@import '/src/variables';
+
+:host {
+  height: -webkit-fill-available;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(/assets/home.svg) no-repeat bottom right $background-path;
+  background-size: 40%;
+  z-index: -1;
+}
+
+.container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title, .subtitle {
+    font-size: 28px;
+    margin: 30px;
+    color: $primary-color;
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .title {
+    margin-bottom: 0px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin-top: 0px;
+  }
+
+ .files {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    place-items: center;
+    margin-right: auto;
+    margin-left: 10%;
+    margin-top: 25px;
+
+    a {
+      background: $primary-color;
+    color: $white;
+    border-radius: 12px;
+    padding: 10px;
+    text-decoration: none;
+    max-width: 280px;
+    width: -webkit-fill-available;
+    }
+
+    a:hover {
+      background-color: $primary-color-hover;
+    }
+ }
+
+ button {
+  background-color: $dark-blue;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+  width: 140px;
+  font-size: 1rem;
+  color: $white;
+  font-weight: bold;
+  height: 35px;
+  cursor: pointer;
+  margin-right: auto;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+
+button:hover {
+  background-color: $dark-blue-hover;
+}
+}

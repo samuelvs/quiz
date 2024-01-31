@@ -1,1 +1,13 @@
-<p>orientations works!</p>
+<div class="container">
+  <p class="title">CLIQUE NOS ASSUNTOS ABAIXO PARA FAZER DOWNLOAD</p>
+  <p class="subtitle">BONS ESTUDOS!</p>
+  <div class="files">
+    <a *ngFor="let item of orientationsArray"
+        href="{{item.path}}"
+        download="{{item.subject}}.pdf">
+      <p>{{item.subject}}</p>
+    </a>
+  </div>
+  <button type="button" class="back" routerLink="/">VOLTAR</button>
+</div>
+

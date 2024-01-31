@@ -6,7 +6,7 @@
       [options]="quizService.lottieOptions"
       (animationCreated)="quizService.animationAnswerCreated($event)"
     ></ng-lottie>
-    <p class="message" *ngIf="isRight === true">Parabéns, você acertou mais uma questão!</p>
+    <p class="message" *ngIf="isRight === true">Parabéns {{quizService.character?.name.split(' ')[0]}}, você acertou mais uma questão!</p>
     <p class="message" *ngIf="isRight === false">Você errou essa questão, continue o jogo!</p>
   </div>
 
@@ -181,7 +181,7 @@
   </div>
   <div *ngIf="quizService.isBonus" [@scaleIn]
         class="bonus-animation" [ngClass]="{'good-subject': quizService.hasGoodSubject(), 'bad-subject': !quizService.hasGoodSubject()}">
-        <p class="bonus-message">{{quizService.hasGoodSubject() ? "Parabéns, você tem um domínio muito bom do assunto!" : "Você errou algumas perguntas, não desanima!"}}</p>
+        <p class="bonus-message">{{quizService.hasGoodSubject() ? "Parabéns, você tem um domínio muito bom do assunto!" : "Você errou algumas perguntas, mas não desanime!"}}</p>
         <p class="bonus-subtitle">{{quizService.bonusCollected ? 'Recompensa coletada!' : 'Clique para coletar sua recompensa.'}}</p>
         <ng-lottie
           [options]="quizService.lottieOptions"
