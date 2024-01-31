@@ -1,0 +1,140 @@
+@import '/src/variables';
+
+:host {
+  background-color: $background;
+  height: 100%;
+}
+
+.example-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 28px;
+  margin: 30px;
+  color: $white;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.form-content {
+  display: flex;
+  width: 85%;
+}
+
+.input-content {
+  width: 60%;
+  margin: 10px;
+  background-color: $white;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.choose-character {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.gif-container {
+  background-color: $white;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 5px solid transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 200px;
+  margin: 10px;
+  transition: border-color 0.3s ease, transform 0.4s ease;
+}
+
+.gif-container:hover{
+  transform: scale(1) rotate(-4deg);
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.selected {
+  border: 5px solid #052A75;
+
+  .gif {
+    opacity: 1;
+  }
+
+  .static {
+    opacity: 0;
+  }
+}
+
+.gif,
+.static {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+}
+
+.static {
+  width: 100px;
+  height: 100px;
+}
+
+.static {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.gif {
+  opacity: 0;
+}
+
+.gif-container:hover .gif {
+  opacity: 1;
+}
+
+.gif-container:hover .static {
+  opacity: 0;
+}
+
+button {
+  background-color: $right;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+  width: 140px;
+  font-size: 1rem;
+  color: #eee;
+  font-weight: bold;
+  height: 35px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: $right-hover;
+}

@@ -7,7 +7,7 @@ import { AnimationItem } from 'lottie-web';
   providedIn: 'root'
 })
 export class QuizService {
-  private character: string = '';
+  private character: any;
   private score: number[] = [0,0,0,0,0];
   private quiz: any = [];
   private pathStars: number[] = [6,12,18,24];
@@ -25,9 +25,12 @@ export class QuizService {
   bonusStyles: Partial<CSSStyleDeclaration> = {};
   bonusCollected: boolean = false;
 
-
   constructor(private ngZone: NgZone) {
     this.quiz = questions;
+  }
+
+  setPlayer(params: any): void {
+    this.character = params;
   }
 
   getNextQuestion() {

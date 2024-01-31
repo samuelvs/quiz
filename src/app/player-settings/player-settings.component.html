@@ -1,1 +1,84 @@
-<p>player-settings works!</p>
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()" class="example-form">
+  <p class="title">Preencha os dados abaixo e escolha seu personagem</p>
+  <div class="form-content">
+    <div class="input-content">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input type="Nome" matInput formControlName="name" [errorStateMatcher]="matcher"
+              placeholder="Ex. João da Silva">
+        <mat-error *ngIf="playerForm.get('name')?.hasError('required')">Nome é <strong>necessário</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Escolaridade</mat-label>
+        <mat-select formControlName="school">
+          <mat-option *ngFor="let option of schoolArray" [value]="option">{{ option.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="playerForm.get('school')?.hasError('required')">Escolaridade é <strong>obrigatória</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Série</mat-label>
+        <mat-select formControlName="year" [disabled]="!playerForm.get('school')?.value">
+          <mat-option *ngFor="let option of playerForm.get('school')?.value?.options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="state">
+          <mat-option *ngFor="let option of stateArray" [value]="option">{{ option.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="playerForm.get('state')?.hasError('required')">Estado é <strong>obrigatório</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Cidade</mat-label>
+        <mat-select formControlName="city" [disabled]="!playerForm.get('state')?.value">
+          <mat-option *ngFor="let option of playerForm.get('state')?.value?.options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="playerForm.get('city')?.hasError('required')">Cidade é <strong>obrigatória</strong></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="choose-character">
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.cat"
+            (click)="chooseCharacter(CharacterTypeEnum.cat)">
+        <img class="gif" src="../../assets/cat.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/cat.png" alt="Static Image">
+      </span>
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.frog"
+            (click)="chooseCharacter(CharacterTypeEnum.frog)">
+        <img class="gif" src="../../assets/frog.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/frog.png" alt="Static Image">
+      </span>
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.owl"
+            (click)="chooseCharacter(CharacterTypeEnum.owl)">
+        <img class="gif" src="../../assets/owl.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/owl.png" alt="Static Image">
+      </span>
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.parrot"
+            (click)="chooseCharacter(CharacterTypeEnum.parrot)">
+        <img class="gif" src="../../assets/parrot.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/parrot.png" alt="Static Image">
+      </span>
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.porcupine"
+            (click)="chooseCharacter(CharacterTypeEnum.porcupine)">
+        <img class="gif" src="../../assets/porcupine.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/porcupine.png" alt="Static Image">
+      </span>
+      <span class="gif-container"
+            [class.selected]="playerForm.get('character')?.value === CharacterTypeEnum.unicorn"
+            (click)="chooseCharacter(CharacterTypeEnum.unicorn)">
+        <img class="gif" src="../../assets/unicorn.gif" alt="Animated GIF">
+        <img class="static" src="../../assets/unicorn.png" alt="Static Image">
+      </span>
+    </div>
+  </div>
+  <button type="submit" *ngIf="!playerForm.invalid">iniciar</button>
+</form>

@@ -70,11 +70,14 @@
     .hit {
       background-color: $right !important;
       color: $background-path;
+      // border-radius: 10px;
+      animation: pulse 0.6s ease-in;
     }
 
     .mistake {
       background-color: $mistake !important;
       color: $background-path;
+      animation: shake 0.5s ease-in-out;
     }
 
     .blocked {
@@ -244,5 +247,73 @@ button:hover {
   }
   .bad-subject {
     background-color: $background;
+  }
+}
+
+
+.block {
+  animation: animateWidth 1.2s ;
+}
+
+@keyframes animateWidth {
+  0%{
+    stroke-width: 1;
+  }
+  30% {
+    stroke-width: 25;
+  }
+  50% {
+    stroke-width: 10;
+  }70%,  100% {
+    stroke-width: 15;
+  }
+}
+
+// .ocult {
+//   animation: moveInCircle 3s ease-out;
+//   transform-origin: center;
+// }
+
+@keyframes shrinkAnimation {
+  0% {
+  transform: scale(32);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(360deg);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes pulse {
+  60% {
+    box-shadow: 0 0 40px 10px $background-path
+  }
+  80% {
+    box-shadow: 0 0 40px 10px #eeeeeeb0;
+  }
+  100% {
+    box-shadow: 0 0 40px 10px #eeeeee00;
   }
 }

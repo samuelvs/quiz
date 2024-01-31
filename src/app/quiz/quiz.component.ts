@@ -81,5 +81,4 @@ export class QuizComponent {
     this.quizService.selectBlock();
     this.quizService.stopAnimation();
   }
-
 }
