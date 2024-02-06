@@ -17,7 +17,7 @@ export class QuizService {
   private answerAnimationItem: AnimationItem;
   private bonusAnimationItem: AnimationItem;
   lottieOptions: AnimationOptions = {
-    path: './../../assets/animations/starWin.json',
+    path: '../../assets/animations/starWin.json',
     autoplay: true,
     loop: true,
   };
@@ -83,10 +83,10 @@ export class QuizService {
     const star = document.getElementById(`star${this.getPathIndex()}`) as HTMLElement;
     star.style.display = 'block';
 
-    const audio = new Audio('./../../assets/sounds/right.mp3');
+    const audio = new Audio('../../assets/sounds/right.mp3');
     audio.play();
 
-    this.updateAnimation({ path: './../../assets/animations/starWin.json' });
+    this.updateAnimation({ path: '../../assets/animations/starWin.json' });
   }
 
   mistakeAnimmation(): void {
@@ -96,18 +96,18 @@ export class QuizService {
     const star = document.getElementById(`wrong${this.getPathIndex()}`) as HTMLElement;
     star.style.display = 'block';
 
-    const audio = new Audio('./../../assets/audios/wrong.mp3');
+    const audio = new Audio('../../assets/sounds/wrong.mp3');
     audio.play();
 
-    this.updateAnimation({ path: './../../assets/animations/wrong.json'});
+    this.updateAnimation({ path: '../../assets/animations/wrong.json'});
   }
 
   giftAnimation() {
-    const audio = new Audio('./../../assets/audios/right.mp3');
+    const audio = new Audio('../../assets/sounds/right.mp3');
     audio.play();
 
     this.bonusStyles = { };
-    this.updateAnimation({ path: './../../assets/animations/gift.json'});
+    this.updateAnimation({ path: '../../assets/animations/gift.json'});
   }
 
   bonusAnimation() {
@@ -116,11 +116,11 @@ export class QuizService {
     block.classList.add('right');
     block?.setAttribute('stroke', '#37B42C');
 
-    const audio = new Audio('./../../assets/audios/right.mp3');
+    const audio = new Audio('../../assets/sounds/right.mp3');
     audio.play();
 
     this.bonusStyles = { width: '80%' };
-    this.updateAnimation({ path: './../../assets/animations/bonus.json'});
+    this.updateAnimation({ path: '../../assets/animations/bonus.json'});
   }
 
   animationAnswerCreated(animationItem: AnimationItem): void {
