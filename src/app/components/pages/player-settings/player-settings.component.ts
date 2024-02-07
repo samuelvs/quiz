@@ -13,7 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { school } from 'src/utils/school';
 import { places } from 'src/utils/places';
-import { QuizService } from '../quiz/quiz.service';
+import { QuizService } from '../../../services/quiz.service';
 import { Router } from '@angular/router';
 import { CharacterTypeEnum } from 'src/interfaces/character.enum';
 

@@ -308,12 +308,15 @@ button:hover {
 
 @keyframes pulse {
   60% {
-    box-shadow: 0 0 40px 10px $background-path
+    box-shadow: 0 0 40px 5px $selected
+    // box-shadow: 0 0 40px 10px $background-path
   }
   80% {
-    box-shadow: 0 0 40px 10px #eeeeeeb0;
+    box-shadow: 0 0 40px 5px #ffb7289a;
+    // box-shadow: 0 0 40px 10px #eeeeeeb0;
   }
   100% {
-    box-shadow: 0 0 40px 10px #eeeeee00;
+    box-shadow: 0 0 40px 5px #ffb72800;
+    // box-shadow: 0 0 40px 10px #eeeeee00;
   }
 }

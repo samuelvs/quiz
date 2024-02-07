@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { QuizService } from './quiz.service';
+import { QuizService } from '../../../services/quiz.service';
 import { AnimationItem } from 'lottie-web';
 import { AnimationOptions } from 'ngx-lottie';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -55,7 +55,9 @@ export class QuizComponent {
   constructor(protected quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.next();
+    this.quizService.loadQuestions().subscribe(() => {
+      this.next();
+    })
   }
 
   selectAlternative(index: number): void {
@@ -65,10 +67,10 @@ export class QuizComponent {
   }
 
   answer(): void {
-    if (this.alternativeSelected != null && this.quizService.answer(this.alternativeSelected)) {
-      this.isRight = true;
-    } else {
-      this.isRight = false;
+    if (this.alternativeSelected != null) {
+      this.quizService.answer(this.alternativeSelected).subscribe((result) => {
+        this.isRight = result;
+      });
     }
   }
 

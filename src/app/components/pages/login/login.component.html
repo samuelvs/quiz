@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="details">
+    <form [formGroup]="loginForm" class="form">
+      <div class="form-content">
+        <mat-form-field class="example-full-width">
+          <mat-label>Login</mat-label>
+          <input type="email" matInput formControlName="email"
+                placeholder="Ex. joaosilva@gmail.com">
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email é <strong>obrigatório</strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Senha é <strong>obrigatória</strong></mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <button>Entrar</button>
+    <div class="register">
+      Novo usuário? &nbsp;
+      <a routerLink="/register" [queryParams]="{returnUrl : returnUrl}">
+        Cadastre aqui
+      </a>
+    </div>
+  </div>
+</div>

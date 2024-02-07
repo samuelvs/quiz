@@ -4,7 +4,7 @@
     <div class="input-content">
       <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-        <input type="Nome" matInput formControlName="name" [errorStateMatcher]="matcher"
+        <input type="email" matInput formControlName="name"
               placeholder="Ex. João da Silva">
         <mat-error *ngIf="playerForm.get('name')?.hasError('required')">Nome é <strong>necessário</strong></mat-error>
       </mat-form-field>

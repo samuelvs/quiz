@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { team } from 'src/utils/team';
 
 @Component({
   selector: 'app-team',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent {
-
+  teamArray = team;
 }

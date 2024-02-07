@@ -1,6 +1,6 @@
 export const orientations = [
   {
-    subject: 'Consulsão',
+    subject: 'Convulsão',
     path: '/src/assets/orientations/Convulsão.pdf'
   },
   {
