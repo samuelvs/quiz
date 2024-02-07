@@ -143,22 +143,14 @@ export class QuizService {
     const star = document.getElementById(`wrong${this.getPathIndex()}`) as HTMLElement;
     star.style.display = 'block';
 
-<<<<<<< Updated upstream:src/app/quiz/quiz.service.ts
     const audio = new Audio('../../assets/sounds/wrong.mp3');
-=======
-    const audio = new Audio('./../../assets/sounds/wrong.mp3');
->>>>>>> Stashed changes:src/app/services/quiz.service.ts
     audio.play();
 
     this.updateAnimation({ path: '../../assets/animations/wrong.json'});
   }
 
   giftAnimation() {
-<<<<<<< Updated upstream:src/app/quiz/quiz.service.ts
     const audio = new Audio('../../assets/sounds/right.mp3');
-=======
-    const audio = new Audio('./../../assets/sounds/right.mp3');
->>>>>>> Stashed changes:src/app/services/quiz.service.ts
     audio.play();
 
     this.bonusStyles = { };
@@ -171,11 +163,7 @@ export class QuizService {
     block.classList.add('right');
     block?.setAttribute('stroke', '#37B42C');
 
-<<<<<<< Updated upstream:src/app/quiz/quiz.service.ts
     const audio = new Audio('../../assets/sounds/right.mp3');
-=======
-    const audio = new Audio('./../../assets/sounds/right.mp3');
->>>>>>> Stashed changes:src/app/services/quiz.service.ts
     audio.play();
 
     this.bonusStyles = { width: '80%' };
