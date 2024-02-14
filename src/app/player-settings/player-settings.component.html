@@ -81,7 +81,19 @@
     </div>
   </div>
   <div class="actions">
-    <button type="button" class="back" routerLink="/">VOLTAR</button>
-    <button type="submit" *ngIf="!playerForm.invalid" (click)="onSubmit()">CONTINUAR</button>
+    <button class="button-82-pushable" role="button" routerLink="/">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front text">
+        VOLTAR
+      </span>
+    </button>
+    <button class="button-82-pushable" type="submit" *ngIf="!playerForm.invalid" (click)="onSubmit()">
+      <span class="button-82-shadow"></span>
+      <span class="button-82-edge"></span>
+      <span class="button-82-front2 text">
+        CONTINUAR
+      </span>
+    </button>
   </div>
 </form>
