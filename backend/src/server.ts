@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 
 import questionRouter from './routers/question.router';
 import userRouter from './routers/user.router';
+import downloadRouter from './routers/download.router';
 
 declare module 'express-serve-static-core' {
   interface Request {
@@ -32,6 +33,7 @@ initializeApp(firebaseConfig);
 
 app.use("/api/questions", questionRouter);
 app.use("/api/users", userRouter);
+app.use("/api/download", downloadRouter);
 
 app.use(express.static('public'));
 app.get('*', (req, res) => {

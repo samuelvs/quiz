@@ -3,8 +3,7 @@
   <p class="subtitle">BONS ESTUDOS!</p>
   <div class="files">
     <a *ngFor="let item of orientationsArray"
-        href="{{item.path}}"
-        download="{{item.subject}}.pdf">
+        [href]="downloadPdf + item.path">
       <p>{{item.subject}}</p>
     </a>
   </div>

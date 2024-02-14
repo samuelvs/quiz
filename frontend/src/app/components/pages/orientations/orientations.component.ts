@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { orientations } from 'src/utils/orientations';
+import { DOWNLOADPDF } from '../../../shared/urls';
+
 
 @Component({
   selector: 'app-orientations',
@@ -8,5 +10,5 @@ import { orientations } from 'src/utils/orientations';
 })
 export class OrientationsComponent {
   orientationsArray = orientations;
-
+  downloadPdf = DOWNLOADPDF;
 }
