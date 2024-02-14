@@ -1,7 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
-import { AnimationItem } from 'lottie-web';
-import { AnimationOptions } from 'ngx-lottie';
+
 import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-quiz',

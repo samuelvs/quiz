@@ -62,8 +62,12 @@ export class QuizService {
   }
 
   answer(userAnswer: number): Observable<boolean> {
-    const URL = `${ANSWERQUESTION}/${this.currentSubject}/${this.currentQuestion}/${userAnswer}`;
-    return this.http.get<boolean>(URL).pipe(
+    const params = {
+      subject: this.currentSubject,
+      question: this.currentQuestion,
+      userAnswer: userAnswer
+    };
+    return this.http.post<boolean>(ANSWERQUESTION, params).pipe(
       map((response: boolean) => {
         if (response) {
           this.addScore();

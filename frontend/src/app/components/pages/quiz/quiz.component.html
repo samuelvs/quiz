@@ -188,7 +188,7 @@
           [styles]="quizService.bonusStyles"
           (animationCreated)="quizService.animationBonusCreated($event)"
           (click)="quizService.bonusAnimation()"
-    ></ng-lottie>
+        ></ng-lottie>
   </div>
 
   <button *ngIf="isRight === null && alternativeSelected !== null" (click)="answer()">RESPONDER</button>
