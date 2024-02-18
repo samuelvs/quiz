@@ -190,18 +190,20 @@
           (click)="quizService.bonusAnimation()"
     ></ng-lottie>
   </div>
-  <button class="button-82-pushable" *ngIf="isRight === null && alternativeSelected !== null" (click)="answer()">
-    <span class="button-82-shadow"></span>
-    <span class="button-82-edge"></span>
-    <span class="button-82-front text">
-      RESPONDER
-    </span>
-  </button>
-  <button class="button-82-pushable" *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)" (click)="next()">
-    <span class="button-82-shadow"></span>
-    <span class="button-82-edge"></span>
-    <span class="button-82-front text">
-      AVANÇAR
-    </span>
-  </button>
+
+  <quiz-button
+    *ngIf="isRight === null && alternativeSelected !== null"
+    (click)="answer()"
+    text="RESPONDER"
+    color="green"
+    routerLink="equipe">
+  </quiz-button>
+
+  <quiz-button
+    *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)"
+    (click)="next()"
+    text="AVANÇAR"
+    color="green"
+    routerLink="equipe">
+  </quiz-button>
 </div>

@@ -81,19 +81,16 @@
     </div>
   </div>
   <div class="actions">
-    <button class="button-82-pushable" role="button" routerLink="/">
-      <span class="button-82-shadow"></span>
-      <span class="button-82-edge"></span>
-      <span class="button-82-front text">
-        VOLTAR
-      </span>
-    </button>
-    <button class="button-82-pushable" type="submit" *ngIf="!playerForm.invalid" (click)="onSubmit()">
-      <span class="button-82-shadow"></span>
-      <span class="button-82-edge"></span>
-      <span class="button-82-front2 text">
-        CONTINUAR
-      </span>
-    </button>
+    <quiz-button
+      text="VOLTAR"
+      routerLink="/">
+    </quiz-button>
+    <quiz-button 
+      *ngIf="!playerForm.invalid"
+      (click)="onSubmit()"
+      text="CONTINUAR"
+      color="green"
+      routerLink="jogador">
+    </quiz-button>
   </div>
 </form>
