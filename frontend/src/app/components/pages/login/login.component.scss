@@ -1,0 +1,83 @@
+@import '/src/variables';
+
+:host {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:host::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('/assets/home.svg') no-repeat bottom right  $background-path;
+  background-size: 40%;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .details {
+    max-width: 400px;
+    width: 100%;
+
+    .form {
+      .form-content {
+        display: flex;
+        flex-direction: column;
+
+        .mat-form-field {
+          margin-bottom: 20px;
+          width: 100%;
+
+          input.mat-input {
+            width: 100%;
+          }
+
+          .mat-error {
+            font-size: 0.75rem;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      background-color: hsl(345deg 100% 47%);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: hsl(0, 90%, 28%);
+      }
+    }
+
+    .register {
+      margin-top: 20px;
+      font-size: 0.875rem;
+      color: #666;
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #0056b3;
+        }
+      }
+    }
+  }
+}
