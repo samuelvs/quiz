@@ -2,18 +2,12 @@
   <p class="title">CLIQUE NOS ASSUNTOS ABAIXO PARA FAZER DOWNLOAD</p>
   <p class="subtitle">BONS ESTUDOS!</p>
   <div class="files">
-    <a *ngFor="let item of orientationsArray"
-        href="{{item.path}}"
-        download="{{item.subject}}.pdf">
+    <a *ngFor="let item of orientationsArray" href="{{item.path}}" download="{{item.subject}}.pdf">
       <p>{{item.subject}}</p>
     </a>
   </div>
-  <button class="button-82-pushable" role="button" routerLink="/">
-    <span class="button-82-shadow"></span>
-    <span class="button-82-edge"></span>
-    <span class="button-82-front text">
-      VOLTAR
-    </span>
-  </button>
+  <div class="button">
+    <quiz-button text="VOLTAR" routerLink="/">
+    </quiz-button>
+  </div>
 </div>
-
