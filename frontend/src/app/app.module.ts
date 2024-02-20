@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LoginComponent } from './components/pages/login/login.component';
 import { LottieModule } from 'ngx-lottie';
 import { LottieComponent, provideLottieOptions } from 'ngx-lottie';
+import { ButtonComponent } from './shared/button/button.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -31,6 +32,7 @@ export function playerFactory() {
     PlayerSettingsComponent,
     QuizComponent,
     LoginComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

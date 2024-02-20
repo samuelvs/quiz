@@ -188,9 +188,22 @@
           [styles]="quizService.bonusStyles"
           (animationCreated)="quizService.animationBonusCreated($event)"
           (click)="quizService.bonusAnimation()"
-        ></ng-lottie>
+    ></ng-lottie>
   </div>
 
-  <button *ngIf="isRight === null && alternativeSelected !== null" (click)="answer()">RESPONDER</button>
-  <button *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)" (click)="next()">AVANÇAR</button>
+  <quiz-button
+    *ngIf="isRight === null && alternativeSelected !== null"
+    (click)="answer()"
+    text="RESPONDER"
+    color="green"
+    routerLink="equipe">
+  </quiz-button>
+
+  <quiz-button
+    *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)"
+    (click)="next()"
+    text="AVANÇAR"
+    color="green"
+    routerLink="equipe">
+  </quiz-button>
 </div>
