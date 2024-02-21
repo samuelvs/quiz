@@ -2,19 +2,21 @@ import { Injectable, NgZone } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { HttpClient } from '@angular/common/http';
-import { ANSWERQUESTION, QUESTIONS } from '../shared/constants/urls';
+import { ANSWERQUESTION, FINALIZE_QUIZ, QUESTIONS } from '../shared/constants/urls';
 import { Observable, map } from 'rxjs';
 import { Character } from '../shared/interfaces/character.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  character: Character;
+  player: Character;
   private score: number[] = [0,0,0,0,0];
   private quiz: any = [];
-  private pathStars: number[] = [6,12,18,24];
+  private pathStars: number[] = [6,12,18,24,30];
   private pathIndex: number = 0;
+  private finalPath: number = 30;
   private currentSubject: number = 0;
   private currentQuestion: number = -1;
   private answerAnimationItem: AnimationItem;
@@ -27,8 +29,9 @@ export class QuizService {
   isBonus: boolean = false;
   bonusStyles: Partial<CSSStyleDeclaration> = {};
   bonusCollected: boolean = false;
+  isLoadingResult: boolean = false;
 
-  constructor(private ngZone: NgZone, private http: HttpClient) {}
+  constructor(private ngZone: NgZone, private http: HttpClient, private router: Router) {}
 
   loadQuestions(): Observable<boolean> {
     return this.http.get<boolean>(QUESTIONS).pipe(
@@ -40,10 +43,17 @@ export class QuizService {
   }
 
   setPlayer(params: any): void {
-    this.character = params;
+    this.player = params;
   }
 
   getNextQuestion() {
+    if (this.pathIndex === this.finalPath) {
+      this.isLoadingResult = true;
+      this.finish().subscribe(res => {
+        this.router.navigate(['/resultado']);
+      });
+    }
+
     this.pathIndex++;
     if (this.pathStars.includes(this.pathIndex)) {
       this.bonusCollected = false;
@@ -79,6 +89,31 @@ export class QuizService {
         return response;
       })
     );
+  }
+
+  finish(): Observable<any> {
+    const params = {
+      ...this.player,
+      score: JSON.stringify(this.score)
+    };
+
+    return this.http.post(FINALIZE_QUIZ, params);
+  }
+
+  getScore(): number {
+    const sum = this.score.reduce((acc, curr) => acc + curr, 0);
+    return sum;
+  }
+
+  reset() {
+    this.setPlayer({});
+    this.score = [0,0,0,0,0];
+    this.pathIndex = 0;
+    this.currentSubject = 0;
+    this.currentQuestion = -1;
+    this.isBonus = false;
+    this.bonusCollected = false;
+    this.isLoadingResult = false;
   }
 
   addScore(): void {
@@ -163,7 +198,10 @@ export class QuizService {
   }
 
   bonusAnimation() {
-    this.bonusCollected = true;
+    if (!this.bonusCollected) {
+      this.addScore();
+      this.bonusCollected = true;
+    }
     const block = document.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
     block.classList.add('right');
     block?.setAttribute('stroke', '#37B42C');
@@ -177,16 +215,16 @@ export class QuizService {
 
   selectBlock(): void {
     const block = document.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
-    block?.classList.add('selected');
+    block?.classList?.add('selected');
     block?.setAttribute('stroke', `${block.getAttribute('fill')}`);
     const group = document.getElementById('blockGroup');
     group?.appendChild(block);
   }
 
   unselectBlock(): void {
-    const block = document.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
+    const block = document?.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
     block?.parentNode?.insertBefore(block, block?.parentNode?.firstChild);
-    block?.classList.remove('selected')
+    block?.classList?.remove('selected');
     block?.setAttribute('stroke', 'none');
   }
 }

@@ -10,7 +10,7 @@ export class QuizGuard implements CanActivate {
   constructor(private quizService: QuizService, private router:Router){}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.quizService.character) {
+    if(this.quizService.player) {
       return true;
     }
 

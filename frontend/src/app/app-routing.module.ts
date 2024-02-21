@@ -9,13 +9,15 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { QuizGuard } from './auth/guards/quiz.guard';
+import { ResultComponent } from './components/pages/result/result.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'orientacoes', component: OrientationsComponent },
   { path: 'equipe', component: TeamComponent },
   { path: 'jogador', component: PlayerSettingsComponent },
-  { path: 'quiz', component: QuizComponent, },// canActivate:[QuizGuard] },
+  { path: 'quiz', component: QuizComponent, canActivate:[QuizGuard] },
+  { path: 'resultado', component: ResultComponent, canActivate:[QuizGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard] },
 ];

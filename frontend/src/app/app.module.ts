@@ -23,6 +23,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ButtonComponent } from './shared/button/button.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ResultComponent } from './components/pages/result/result.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -41,6 +42,7 @@ export function playerFactory() {
     DashboardComponent,
     UsersComponent,
     AdminComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,
