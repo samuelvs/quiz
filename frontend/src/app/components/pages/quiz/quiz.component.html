@@ -163,8 +163,18 @@
 </div>
 
 <div class="question">
-  <div *ngIf="!quizService.isBonus"
-        class="alternatives">
+  <div *ngIf="quizService.isBonus" [@scaleIn]
+        class="bonus-animation" [ngClass]="{'good-subject': quizService.hasGoodSubject(), 'bad-subject': !quizService.hasGoodSubject()}">
+        <p class="bonus-message">{{quizService.hasGoodSubject() ? "Parabéns, você tem um domínio muito bom do assunto!" : "Você errou algumas perguntas, mas não desanime!"}}</p>
+        <p class="bonus-subtitle">{{quizService.bonusCollected ? 'Recompensa coletada!' : 'Clique para coletar sua recompensa.'}}</p>
+        <ng-lottie
+          [options]="quizService.lottieOptions"
+          [styles]="quizService.bonusStyles"
+          (animationCreated)="quizService.animationBonusCreated($event)"
+          (click)="quizService.bonusAnimation()"
+    ></ng-lottie>
+  </div>
+  <div class="alternatives" [ngClass]="{'bonus': quizService.isBonus}">
     <p class="title">QUESTÃO {{quizService.getQuestionNumber()}} DE 25</p>
     <p class="statement">{{question?.statement}}</p>
     <span *ngFor="let questionItem of question?.alternatives; let i = index"
@@ -179,17 +189,7 @@
       <p>{{questionItem}}</p>
     </span>
   </div>
-  <div *ngIf="quizService.isBonus" [@scaleIn]
-        class="bonus-animation" [ngClass]="{'good-subject': quizService.hasGoodSubject(), 'bad-subject': !quizService.hasGoodSubject()}">
-        <p class="bonus-message">{{quizService.hasGoodSubject() ? "Parabéns, você tem um domínio muito bom do assunto!" : "Você errou algumas perguntas, mas não desanime!"}}</p>
-        <p class="bonus-subtitle">{{quizService.bonusCollected ? 'Recompensa coletada!' : 'Clique para coletar sua recompensa.'}}</p>
-        <ng-lottie
-          [options]="quizService.lottieOptions"
-          [styles]="quizService.bonusStyles"
-          (animationCreated)="quizService.animationBonusCreated($event)"
-          (click)="quizService.bonusAnimation()"
-    ></ng-lottie>
-  </div>
+
 
   <quiz-button
     *ngIf="isRight === null && alternativeSelected !== null"

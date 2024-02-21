@@ -2,14 +2,16 @@
 
 :host {
   background-color: $background;
-  height: 100%;
+  flex-grow: 1;
 }
 
 .example-form {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
 .title {
@@ -28,11 +30,14 @@
 .form-content {
   display: flex;
   width: 85%;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-content {
   width: 60%;
-  margin: 10px;
+  max-width: 500px;
   background-color: $white;
   border-radius: 12px;
   padding: 12px;
@@ -44,6 +49,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
+  height: 100%;
+  max-width: 470px;
+  gap: 14px;
 }
 
 .gif-container {
@@ -57,7 +65,7 @@
   justify-content: center;
   flex-direction: column;
   max-width: 200px;
-  margin: 10px;
+  // height: 24vh;
   transition: border-color 0.3s ease, transform 0.4s ease;
 }
 
@@ -89,21 +97,18 @@
   }
 }
 
-.gif,
-.static {
+.gif {
   position: absolute;
-  width: 140px;
-  height: 140px;
-}
-
-.static {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }
 
 .static {
   opacity: 1;
   pointer-events: none;
+  position: absolute;
+  width: 73%;
+  height: 73%;
 }
 
 .gif {
@@ -121,5 +126,24 @@
 .actions {
   display: flex;
   gap: 20px;
-  margin-top: 70px;
+  margin: 10px 0px 15px;
+}
+
+@media only screen and (max-width: 850px) {
+  .form-content {
+    flex-direction: column;
+
+    .input-content {
+      width: 93%;
+    }
+
+    .gif-container {
+      height: 18vh;
+    }
+  }
+
+  .actions {
+    flex-direction: column;
+    margin: 20px 0px 20px;
+  }
 }

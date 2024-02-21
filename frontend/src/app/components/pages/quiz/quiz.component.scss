@@ -5,7 +5,8 @@
   background: $background;
   height: 100%;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .path {
@@ -31,18 +32,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: $white;
   margin: 18px 36px 18px 18px;
-  font-weight: bold;
   max-width: 536px;
   font-size: 1rem;
   flex: 1;
+  justify-content: space-between;
+
+  .bonus {
+    opacity: 0;
+    position: fixed;
+  }
 
   .alternatives {
-    display: contents;
+    display: flex;
+    flex-direction: column;
 
     .title {
       font-size: 2rem;
+      font-weight: bold;
+      align-self: center;
     }
 
     .statement {
@@ -71,7 +80,6 @@
     .hit {
       background-color: $right !important;
       color: $background-path;
-      // border-radius: 10px;
       animation: pulse 0.6s ease-in;
     }
 
@@ -108,115 +116,6 @@
 
 .show {
   display: block;
-}
-
-button {
-  display: inline-block;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: bold;
-  height: 50px;
-  padding: 0 25px;
-  transition: all 200ms;
-  justify-content: center;
-  margin-top: 70px;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-.button-82-pushable {
-  position: relative;
-  border: none;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  outline-offset: 4px;
-  transition: filter 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-82-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: hsl(0deg 0% 0% / 0.25);
-  will-change: transform;
-  transform: translateY(2px);
-  transition:
-    transform 600ms cubic-bezier(.3, .7, .4, 1);
-}
-
-.button-82-edge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: linear-gradient(to left,
-      #1f4a0e 0%,
-      #3d751b 8%,
-      #3d751b 92%,
-      #1f4a0e 100%);
-}
-
-.button-82-front {
-  display: block;
-  position: relative;
-  padding: 12px 27px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  color: white;
-  background: #58ba09;
-  will-change: transform;
-  transform: translateY(-4px);
-  transition:
-    transform 600ms cubic-bezier(.3, .7, .4, 1);
-}
-
-@media (min-width: 768px) {
-  .button-82-front {
-    font-size: 1.25rem;
-    padding: 12px 42px;
-  }
-}
-
-.button-82-pushable:hover {
-  filter: brightness(110%);
-  -webkit-filter: brightness(110%);
-}
-
-.button-82-pushable:hover .button-82-front {
-  transform: translateY(-6px);
-  transition:
-    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
-}
-
-.button-82-pushable:active .button-82-front {
-  transform: translateY(-2px);
-  transition: transform 34ms;
-}
-
-.button-82-pushable:hover .button-82-shadow {
-  transform: translateY(4px);
-  transition:
-    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
-}
-
-.button-82-pushable:active .button-82-shadow {
-  transform: translateY(1px);
-  transition: transform 34ms;
-}
-
-.button-82-pushable:focus:not(:focus-visible) {
-  outline: none;
 }
 
 .animation {
@@ -271,15 +170,16 @@ button:hover {
 
 @media only screen and (max-width: 500px) {
   :host {
-    flex-direction: column;
-    align-items: center;
-    justify-content: unset;
+    display: block;
+    flex-grow: 1;
+    height: auto;
+
   }
 
   .path {
     margin: 12px;
     margin-bottom: 0px;
-    max-height: 45%;
+    max-height: 45vh;
     justify-content: center;
     width: -webkit-fill-available;
   }
@@ -287,25 +187,27 @@ button:hover {
   .question {
     margin: 12px;
     margin-top: 0px;
-    height: 100%;
-    max-height: 50%;
-    font-size: 12px;
+    font-size: 14px;
+
+    .bonus {
+      position: unset;
+    }
 
     .alternatives {
       text-align: center;
 
       .title {
-        font-size: 12px;
+        font-size: 24px;
       }
 
       .alternative {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 
   }
 
-  button {
+  quiz-button {
     z-index: 2;
   }
 
@@ -342,7 +244,6 @@ button:hover {
   }
 }
 
-
 .block {
   animation: animateWidth 1.2s;
 }
@@ -366,10 +267,6 @@ button:hover {
   }
 }
 
-// .ocult {
-//   animation: moveInCircle 3s ease-out;
-//   transform-origin: center;
-// }
 
 @keyframes shrinkAnimation {
   0% {
