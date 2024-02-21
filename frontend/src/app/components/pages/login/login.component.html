@@ -1,3 +1,9 @@
+<div *ngIf="isLoading" class="loading">
+  <div class="spinner-content">
+    <span class="spinner"></span>
+  </div>
+</div>
+
 <div class="container">
   <div class="details">
     <form [formGroup]="loginForm" class="form">
@@ -18,12 +24,14 @@
       </div>
     </form>
 
-    <button (click)="submit()">Entrar</button>
-    <div class="register">
+    <quiz-button text="Entrar" color="green" (click)="submit()" [disabled]="this.loginForm.invalid"></quiz-button>
+    <quiz-button text="Voltar"  routerLink="/"></quiz-button>
+    <!-- <button (click)="submit()">Entrar</button> -->
+    <!-- <div class="register">
       Novo usuário?
       <a routerLink="/cadastro" [queryParams]="{returnUrl : returnUrl}">
         Cadastre aqui!
       </a>
-    </div>
+    </div> -->
   </div>
 </div>

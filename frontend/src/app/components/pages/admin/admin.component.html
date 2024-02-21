@@ -1,1 +1,37 @@
-<p>admin works!</p>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <a class="menu-button"
+      [routerLink]="'/admin/dashboard'"
+      [class.navigation__link--current]="router.url === '/admin/dashboard'"
+    >
+      <mat-icon>dashboard</mat-icon>
+      <span>Dashboard</span>
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <a class="menu-button"
+      [routerLink]="'/admin/usuarios'"
+      [class.navigation__link--current]="router.url === '/admin/usuarios'"
+    >
+      <mat-icon>group</mat-icon>
+      <span>Usuários</span>
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <a class="menu-button"
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </a>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      <div class="content mat-elevation-z8">
+        <router-outlet></router-outlet>
+        <router-outlet name="section1"></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

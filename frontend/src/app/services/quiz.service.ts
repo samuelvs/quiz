@@ -2,10 +2,11 @@ import { Injectable, NgZone } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { HttpClient } from '@angular/common/http';
-import { ANSWERQUESTION, FINALIZE_QUIZ, QUESTIONS } from '../shared/constants/urls';
-import { Observable, map } from 'rxjs';
+import { ANSWERQUESTION, DASHBOARD, FINALIZE_QUIZ, QUESTIONS } from '../shared/constants/urls';
+import { Observable, map, tap } from 'rxjs';
 import { Character } from '../shared/interfaces/character.interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class QuizService {
   bonusCollected: boolean = false;
   isLoadingResult: boolean = false;
 
-  constructor(private ngZone: NgZone, private http: HttpClient, private router: Router) {}
+  constructor(private ngZone: NgZone, private http: HttpClient, private router: Router, private toastrService:ToastrService) {}
 
   loadQuestions(): Observable<boolean> {
     return this.http.get<boolean>(QUESTIONS).pipe(
@@ -114,6 +115,19 @@ export class QuizService {
     this.isBonus = false;
     this.bonusCollected = false;
     this.isLoadingResult = false;
+  }
+
+  getDashboard(): Observable<any> {
+    return this.http.get(DASHBOARD).pipe(
+      tap({
+        next: (dashboard: any) =>{
+          return dashboard;
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error.message, 'Algo deu errado:');
+        }
+      })
+    );
   }
 
   addScore(): void {

@@ -1,1 +1,17 @@
-<p>users works!</p>
+<div class="user-container">
+  <span class="column">
+    <p>Email</p>
+    <p>Ações</p>
+  </span>
+  <div class="user-container--item row" *ngFor="let user of users">
+      <p>{{user.email}}</p>
+      <span class="actions">
+        <a (click)="resetUser(user.id)">
+          <mat-icon>restart_alt</mat-icon>
+        </a>
+        <a (click)="deleteUser(user.id)">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </span>
+  </div>
+</div>

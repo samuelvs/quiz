@@ -7,16 +7,27 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
-  private users: [];
+  users: any = [];
+  isLoading: boolean = false;
+
   constructor(private userService: UserService){}
 
   ngOnInit() {
+    this.isLoading = true;
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
+      this.isLoading = false;
     });
   }
 
-  deleteUser(userId: string): void {
-    // this.userService.deleteUser(userId);
+  resetUser(userId: string): void {
+    console.log(userId);
+
+    this.userService.resetPassword(userId);
   }
+
+  deleteUser(userId: string): void {
+    this.userService.deleteUser(userId);
+  }
+
 }

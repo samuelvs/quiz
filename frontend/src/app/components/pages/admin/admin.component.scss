@@ -1,0 +1,65 @@
+@import '/src/variables';
+
+:host {
+  height: 100%;
+}
+
+mat-sidenav {
+  background: #303030;
+  color: white;
+
+  .menu-button {
+    padding: 15px 80px 15px 12px;
+    display: flex;
+    align-items: center;
+    border: 0;
+    color: #ffff;
+    background-color: #303030;
+    cursor: pointer;
+    text-decoration: none;
+
+    mat-icon {
+      height: 20px;
+      width: 20px;
+      font-size: 20px;
+    }
+
+    span {
+      padding-left: 10px;
+    }
+  }
+
+  .menu-button:hover {
+    background-color: #3f3f3f;
+  }
+
+  .navigation__link--current {
+    background: rgba(176, 39, 39, 0.15);
+    color: $primary-color;
+  }
+
+  .navigation__link--current:hover {
+    background: #b6313168;
+  }
+}
+
+.content {
+  margin: 12px 12px 12px 16px;
+  box-shadow: none;
+}
+
+mat-sidenav-content {
+  background-color: #f0f0f0;
+  color: #303030;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  position: relative;
+}
+
+.menu-button:last-child {
+  bottom: 0px;
+  width: -webkit-fill-available;
+  position: absolute;
+}

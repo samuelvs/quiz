@@ -18,6 +18,29 @@
   z-index: -1;
 }
 
+.logo {
+  position: fixed;
+  display: flex;
+  gap: 10px;
+  height: 50px;
+  z-index: 8;
+  top: 10px;
+  left: 10px;
+}
+
+.login {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+
+  mat-icon {
+    font-size: 40px;
+    display: contents;
+    color: $primary-color;
+  }
+}
+
 .home {
   display: flex;
   flex-direction: column;

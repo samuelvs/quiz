@@ -82,13 +82,13 @@
   </div>
   <div class="actions">
     <quiz-button
-      text="VOLTAR"
+      text="Voltar"
       routerLink="/">
     </quiz-button>
-    <quiz-button 
+    <quiz-button
       *ngIf="!playerForm.invalid"
       (click)="onSubmit()"
-      text="CONTINUAR"
+      text="Continuar"
       color="green"
       routerLink="jogador">
     </quiz-button>
