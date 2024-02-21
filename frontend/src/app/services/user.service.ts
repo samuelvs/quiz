@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, timeout } from 'rxjs';
 import { USER_CHANGE_PASSWORD, USER_LIST, USER_LOGIN, USER_REGISTER, USER_RESET_PASSWORD, USER_DELETE } from '../shared/constants/urls';
 
 const USER_KEY = 'User';
@@ -86,15 +86,15 @@ export class UserService {
     )
   }
 
-  resetPassword(user: any): Observable<any>{
-    return this.http.post(USER_RESET_PASSWORD, user).pipe(
+  resetPassword(user: any) {
+
+    this.http.post(USER_RESET_PASSWORD, user).pipe(
       tap({
         next: (res: any) => {
-          // this.setUserToLocalStorage(user);
-          // this.userSubject.next(user);
           this.toastrService.success(
             `Senha resetada com sucesso!`,
-            `Nosa senha: ${res?.password}`
+            `Nova senha: ${res?.password}`,
+            {timeOut: 5000}
           )
         },
         error: (errorResponse) => {
@@ -105,7 +105,7 @@ export class UserService {
     )
   }
 
-  deletePassword(userId: string): Observable<any>{
+  deleteUser(userId: string): Observable<any>{
     return this.http.post(USER_DELETE, { user_id: userId}).pipe(
       tap({
         next: (res: any) => {

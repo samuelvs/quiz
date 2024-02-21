@@ -13,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginComponent } from './components/pages/login/login.component';
 import { DashboardComponent } from './components/pages/admin/dashboard/dashboard.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
@@ -53,6 +55,8 @@ export function playerFactory() {
     FormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatIconModule,
+    MatSidenavModule,
     HttpClientModule,
     LottieModule.forRoot({ player: playerFactory, useWebWorker: true }),
     ToastrModule.forRoot({

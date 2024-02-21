@@ -1,0 +1,31 @@
+
+.user-container {
+  margin: 16px 16px;
+
+  .column {
+    display: flex;
+    font-weight: 800;
+
+    p {
+      flex: 1;
+    }
+  }
+
+  .row {
+    display: flex;
+    margin-bottom: 12px;
+
+    p, .actions {
+      flex: 1;
+      margin: 0px;
+    }
+
+    .actions {
+      a {
+        color: #7b1fa2;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

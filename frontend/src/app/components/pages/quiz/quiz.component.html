@@ -204,7 +204,7 @@
   <quiz-button
     *ngIf="isRight === null && alternativeSelected !== null"
     (click)="answer()"
-    text="RESPONDER"
+    text="Responder"
     color="green">
   </quiz-button>
 
@@ -212,7 +212,7 @@
     *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)"
     [class.button__animation]="isRight !== null || (quizService.isBonus && quizService.bonusCollected)"
     (click)="next()"
-    text="AVANÇAR"
+    text="Continuar"
     color="green">
   </quiz-button>
 </div>

@@ -14,4 +14,4 @@ export const USER_CHANGE_PASSWORD = BASE_URL + '/api/change-password';
 export const USER_RESET_PASSWORD = BASE_URL + '/api/reset-password';
 export const USER_DELETE = BASE_URL + '/api/delete';
 
-export const DASHBOARD = BASE_URL + '/api/dashboard';
+export const DASHBOARD = QUESTIONS + '/results';
