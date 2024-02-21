@@ -2,6 +2,7 @@ $primary-color: #E51818;
 $primary-color-hover: #c71414;
 $white: #fff;
 $black: #000;
+$grey: #37474f;
 $background: #E85B5B;
 $background-blue: #5b6ce8;
 $background-path: #EEEEEE;
@@ -12,5 +13,18 @@ $right: #37B42C;
 $right-hover: #2c8b24;
 $block-dark: #695f5f;
 $block-light: #a69797;
-// $hover: ;
 $selected: #FFB828;
+$white-button: linear-gradient(
+  to left,
+  hsl(340, 100%, 16%) 0%,
+  #4d0003 8%,
+  #530003 92%,
+  hsl(0, 97%, 14%) 100%
+);
+$green-button: linear-gradient(
+  to left,
+  hsl(128, 100%, 16%) 0%,
+  hsl(128, 100%, 32%) 8%,
+  hsl(128 100% 32%) 92%,
+  hsl(128 100% 16%) 100%
+);

@@ -1,0 +1,17 @@
+<div class="content" [ngClass]="{'show-content': showResult}">
+  <img class="trophy" [ngClass]="{'hidden': showResult}" src="../../assets/animations/output.gif" alt="">
+  <div class="result" class="result" [ngClass]="{'hidden': !showResult}">
+    <img src="../../assets/animations/cat.gif" alt="">
+    <p>Parabéns {{name}}, você foi incrível! Podemos perceber que você domina muito bem todos os assuntos!</p>
+    <p>Você respondeu corretamente <strong>{{score}}</strong> questões.</p>
+    <quiz-button
+      text="Menu"
+      color="green"
+      routerLink="/">
+    </quiz-button>
+  </div>
+</div>
+
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>

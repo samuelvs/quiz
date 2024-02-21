@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { orientations } from 'src/utils/orientations';
-import { DOWNLOADPDF } from '../../../shared/urls';
+import { DOWNLOADPDF } from '../../../shared/constants/urls';
 
 
 @Component({

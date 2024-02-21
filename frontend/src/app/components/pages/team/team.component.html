@@ -1,8 +1,13 @@
-<div>
-  <p class="title">IDEALIZADORES DO PROJETO</p>
+<div class="container">
+  <h1>IDEALIZADORES DO PROJETO</h1>
   <span *ngFor="let item of teamArray">
-    <p class="name">{{item.name}}</p>
-    <p class="position">{{item.position}}</p>
+    <h3>{{item.name}}</h3>
+    <h4>{{item.position}}</h4>
     <p class="curriculum">{{item.curriculum}}</p>
+    <hr>
   </span>
+  <div class="button">
+    <quiz-button text="VOLTAR" routerLink="/">
+    </quiz-button>
+  </div>
 </div>

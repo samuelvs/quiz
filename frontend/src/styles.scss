@@ -13,8 +13,9 @@ body {
 }
 
 app-root {
-  flex: 1;
-  display: contents;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
 }
 
 html, body { height: 100%; }

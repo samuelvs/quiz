@@ -5,7 +5,8 @@
   background: $background;
   height: 100%;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .path {
@@ -19,30 +20,38 @@
   max-width: 536px;
   flex: 1;
 
-   svg {
+  svg {
     margin: 20px;
     overflow: visible;
     height: auto;
     width: auto;
-   }
+  }
 }
 
 .question {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: $white;
   margin: 18px 36px 18px 18px;
-  font-weight: bold;
   max-width: 536px;
   font-size: 1rem;
   flex: 1;
+  justify-content: space-between;
+
+  .bonus {
+    opacity: 0;
+    position: fixed;
+  }
 
   .alternatives {
-    display: contents;
+    display: flex;
+    flex-direction: column;
 
     .title {
       font-size: 2rem;
+      font-weight: bold;
+      align-self: center;
     }
 
     .statement {
@@ -59,6 +68,7 @@
       width: -webkit-fill-available;
       text-transform: uppercase;
     }
+
     .alternative-selected {
       background-color: $selected !important;
     }
@@ -70,7 +80,6 @@
     .hit {
       background-color: $right !important;
       color: $background-path;
-      // border-radius: 10px;
       animation: pulse 0.6s ease-in;
     }
 
@@ -109,27 +118,6 @@
   display: block;
 }
 
-button {
-  background-color: $right;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  transition: background-color 0.3s ease;
-  width: 140px;
-  font-size: 1rem;
-  color: #eee;
-  font-weight: bold;
-  height: 35px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-  margin-top: auto;
-}
-
-button:hover {
-  background-color: $right-hover;
-}
-
 .animation {
   z-index: 2;
   position: absolute;
@@ -163,34 +151,35 @@ button:hover {
   padding: 12px;
   justify-content: space-around;
 
- p {
-  margin: 0px;
- }
+  p {
+    margin: 0px;
+  }
 
- .bonus-subtitle {
-  margin-top: 10px;
-  font-size: 1.5rem;
- }
+  .bonus-subtitle {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }
 
- ng-lottie {
-  display: flex;
-  place-content: center;
-  flex: 1;
-  cursor: pointer;
- }
+  ng-lottie {
+    display: flex;
+    place-content: center;
+    flex: 1;
+    cursor: pointer;
+  }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 850px) {
   :host {
-    flex-direction: column;
-    align-items: center;
-    justify-content: unset;
+    display: block;
+    flex-grow: 1;
+    height: auto;
+    text-align: -webkit-center;
   }
 
   .path {
     margin: 12px;
     margin-bottom: 0px;
-    max-height: 45%;
+    max-height: 45vh;
     justify-content: center;
     width: -webkit-fill-available;
   }
@@ -198,26 +187,36 @@ button:hover {
   .question {
     margin: 12px;
     margin-top: 0px;
-    height: 100%;
-    max-height: 50%;
-    font-size: 12px;
+    font-size: 14px;
+
+    .bonus {
+      position: unset;
+    }
 
     .alternatives {
       text-align: center;
+
       .title {
-        font-size: 12px;
+        font-size: 24px;
+        margin-bottom: 0px;
       }
+
       .alternative {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 
   }
 
-  button {
+  quiz-button {
     z-index: 2;
+    margin: 10px;
   }
 
+  .button__animation {
+    position: fixed;
+    bottom: 10px;
+  }
   .animation {
     position: fixed;
     justify-content: space-evenly;
@@ -245,40 +244,42 @@ button:hover {
   .good-subject {
     background-color: $background-blue;
   }
+
   .bad-subject {
     background-color: $background;
   }
 }
 
-
 .block {
-  animation: animateWidth 1.2s ;
+  animation: animateWidth 1.2s;
 }
 
 @keyframes animateWidth {
-  0%{
+  0% {
     stroke-width: 1;
   }
+
   30% {
     stroke-width: 25;
   }
+
   50% {
     stroke-width: 10;
-  }70%,  100% {
+  }
+
+  70%,
+  100% {
     stroke-width: 15;
   }
 }
 
-// .ocult {
-//   animation: moveInCircle 3s ease-out;
-//   transform-origin: center;
-// }
 
 @keyframes shrinkAnimation {
   0% {
-  transform: scale(32);
+    transform: scale(32);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -289,18 +290,24 @@ button:hover {
   0% {
     transform: translateX(0) translateY(0);
   }
+
   100% {
     transform: translateX(0) translateY(0) rotate(360deg);
   }
 }
 
 @keyframes shake {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
-  25%, 75% {
+
+  25%,
+  75% {
     transform: translateX(-5px);
   }
+
   50% {
     transform: translateX(5px);
   }
@@ -308,15 +315,72 @@ button:hover {
 
 @keyframes pulse {
   60% {
-    box-shadow: 0 0 40px 5px $selected
-    // box-shadow: 0 0 40px 10px $background-path
+    box-shadow: 0 0 40px 10px $background-path
   }
+
   80% {
-    box-shadow: 0 0 40px 5px #ffb7289a;
-    // box-shadow: 0 0 40px 10px #eeeeeeb0;
+    box-shadow: 0 0 40px 10px #eeeeeeb0;
+  }
+
+  100% {
+    box-shadow: 0 0 40px 10px #eeeeee00;
+  }
+}
+
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(0 0 0 / 75%);
+  color: #fff;
+  z-index: 1;
+
+  .spinner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .spinner {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      border: 5px solid #0f004a6b;
+      border-top-color: #042973;
+      background-color: #e2e2e2;
+    }
+    img {
+      height: 125px;
+      position: absolute;
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 18px;
+    animation: pulseText 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
   }
   100% {
-    box-shadow: 0 0 40px 5px #ffb72800;
-    // box-shadow: 0 0 40px 10px #eeeeee00;
+    opacity: 1;
   }
 }
