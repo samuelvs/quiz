@@ -48,7 +48,7 @@ const validateInput = [
   body('state').isString(),
   body('city').isString(),
   body('character').isString(),
-  body('score').isNumeric()
+  body('score').isString()
 ];
 
 const limiter = rateLimit({
