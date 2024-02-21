@@ -6,7 +6,7 @@
       [options]="quizService.lottieOptions"
       (animationCreated)="quizService.animationAnswerCreated($event)"
     ></ng-lottie>
-    <p class="message" *ngIf="isRight === true">Parabéns {{quizService.character?.name.split(' ')[0]}}, você acertou mais uma questão!</p>
+    <p class="message" *ngIf="isRight === true">Parabéns {{ quizService.character.name.split(' ')[0] }}, você acertou mais uma questão!</p>
     <p class="message" *ngIf="isRight === false">Você errou essa questão, continue o jogo!</p>
   </div>
 
@@ -195,15 +195,13 @@
     *ngIf="isRight === null && alternativeSelected !== null"
     (click)="answer()"
     text="RESPONDER"
-    color="green"
-    routerLink="equipe">
+    color="green">
   </quiz-button>
 
   <quiz-button
     *ngIf="isRight !== null || (quizService.isBonus && quizService.bonusCollected)"
     (click)="next()"
     text="AVANÇAR"
-    color="green"
-    routerLink="equipe">
+    color="green">
   </quiz-button>
 </div>

@@ -2,14 +2,15 @@ import { Injectable, NgZone } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { HttpClient } from '@angular/common/http';
-import { ANSWERQUESTION, QUESTIONS } from '../shared/urls';
+import { ANSWERQUESTION, QUESTIONS } from '../shared/constants/urls';
 import { Observable, map } from 'rxjs';
+import { Character } from '../shared/interfaces/character.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  character: any;
+  character: Character;
   private score: number[] = [0,0,0,0,0];
   private quiz: any = [];
   private pathStars: number[] = [6,12,18,24];

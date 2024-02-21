@@ -2,6 +2,7 @@
   <div class="details">
     <form [formGroup]="loginForm" class="form">
       <div class="form-content">
+        <mat-error *ngIf="error.length > 0">{{error}}</mat-error>
         <mat-form-field class="example-full-width">
           <mat-label>Login</mat-label>
           <input type="email" matInput formControlName="email"
@@ -17,11 +18,11 @@
       </div>
     </form>
 
-    <button>Entrar</button>
+    <button (click)="submit()">Entrar</button>
     <div class="register">
-      Novo usuário? &nbsp;
-      <a routerLink="/register" [queryParams]="{returnUrl : returnUrl}">
-        Cadastre aqui
+      Novo usuário?
+      <a routerLink="/cadastro" [queryParams]="{returnUrl : returnUrl}">
+        Cadastre aqui!
       </a>
     </div>
   </div>
