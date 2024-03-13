@@ -2,11 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
+[It'll be necessary Firebase account,](#build) [Node.js](#node) and [Angular](#angular).
+
 contact: sva2@aluno.ifal.edu.br
 
-## Installation of Node.js and npm
+## Installation of Node.js and npm  <a name="node"></a>
 
-**Node.js:**
+**Node.js:** 
    - Download and install Node.js from the official website: [Node.js](https://nodejs.org/).
    - Verify the installation by opening a terminal and typing:
      ```bash
@@ -14,7 +16,7 @@ contact: sva2@aluno.ifal.edu.br
      npm -v
      ```
 
-## Installation of Angular CLI
+## Installation of Angular CLI  <a name="angular"></a>
 
 **Angular CLI:**
    - Install the Angular CLI globally by running the following command in the terminal:
@@ -39,7 +41,7 @@ contact: sva2@aluno.ifal.edu.br
 First `cd frontend`.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Build
+## Build <a name="build"></a>
 
 The project use a Firebase Authentication and Firebase Database. You can find all variables need in your firebase project -> settings -> general,your firebase project -> settings -> accounts service -> Generate new primary key. Those two places contains all Firebase values necessary to .env.
 
