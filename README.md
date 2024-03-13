@@ -2,9 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
-## Installation of Node.js and npm
+[It'll be necessary Firebase account,](#build) [Node.js](#node) and [Angular](#angular).
 
-**Node.js:**
+contact: sva2@aluno.ifal.edu.br
+
+## Installation of Node.js and npm  <a name="node"></a>
+
+**Node.js:** 
    - Download and install Node.js from the official website: [Node.js](https://nodejs.org/).
    - Verify the installation by opening a terminal and typing:
      ```bash
@@ -12,7 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
      npm -v
      ```
 
-## Installation of Angular CLI
+## Installation of Angular CLI  <a name="angular"></a>
 
 **Angular CLI:**
    - Install the Angular CLI globally by running the following command in the terminal:
@@ -32,27 +36,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
      npm install
      ```
 
-## Development server
+## Development front
 
 First `cd frontend`.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Build <a name="build"></a>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The project use a Firebase Authentication and Firebase Database. You can find all variables need in your firebase project -> settings -> general,your firebase project -> settings -> accounts service -> Generate new primary key. Those two places contains all Firebase values necessary to .env.
 
-## Build
+Run `npm run prebuild; npm run build; npm run copy-assets` to build the project (Front-end and Back-end). The build artifacts will be stored in the `dist/` directory.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Init server
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `npm run start` to start server node.

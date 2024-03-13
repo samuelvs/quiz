@@ -3,38 +3,45 @@
   <div class="form-content">
     <div class="input-content">
       <mat-form-field class="example-full-width">
-        <mat-label>Nome</mat-label>
-        <input type="Nome" matInput formControlName="name" [errorStateMatcher]="matcher"
+        <!-- <mat-label>Nome</mat-label> -->
+        <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher"
               placeholder="Ex. João da Silva">
         <mat-error *ngIf="playerForm.get('name')?.hasError('required')">Nome é <strong>necessário</strong></mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Escolaridade</mat-label>
-        <mat-select formControlName="school">
+        <!-- <mat-label>Idade</mat-label> -->
+        <input type="number" matInput formControlName="age" [errorStateMatcher]="matcher"
+              placeholder="Informe sua idade">
+        <mat-error *ngIf="playerForm.get('age')?.hasError('required')">Idade é <strong>necessária</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <!-- <mat-label>Escolaridade</mat-label> -->
+        <mat-select formControlName="school" placeholder="Escolaridade">
           <mat-option *ngFor="let option of schoolArray" [value]="option">{{ option.name }}</mat-option>
         </mat-select>
         <mat-error *ngIf="playerForm.get('school')?.hasError('required')">Escolaridade é <strong>obrigatória</strong></mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Série</mat-label>
-        <mat-select formControlName="year" [disabled]="!playerForm.get('school')?.value">
+        <!-- <mat-label>Série</mat-label> -->
+        <mat-select formControlName="year" [disabled]="!playerForm.get('school')?.value" placeholder="Série">
           <mat-option *ngFor="let option of playerForm.get('school')?.value?.options" [value]="option">{{ option }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Estado</mat-label>
-        <mat-select formControlName="state">
+        <!-- <mat-label>Estado</mat-label> -->
+        <mat-select formControlName="state" placeholder="Estado">
           <mat-option *ngFor="let option of stateArray" [value]="option">{{ option.name }}</mat-option>
         </mat-select>
         <mat-error *ngIf="playerForm.get('state')?.hasError('required')">Estado é <strong>obrigatório</strong></mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Cidade</mat-label>
-        <mat-select formControlName="city" [disabled]="!playerForm.get('state')?.value">
+        <!-- <mat-label>Cidade</mat-label> -->
+        <mat-select formControlName="city" [disabled]="!playerForm.get('state')?.value" placeholder="Cidade">
           <mat-option *ngFor="let option of playerForm.get('state')?.value?.options" [value]="option">{{ option }}</mat-option>
         </mat-select>
         <mat-error *ngIf="playerForm.get('city')?.hasError('required')">Cidade é <strong>obrigatória</strong></mat-error>

@@ -10,6 +10,11 @@ export const team = [
     curriculum: "Possui Doutorado em Patologia Oral pela Universidade Federal do Rio Grande do Norte (UFRN), Mestrado em Odontologia (Diagnóstico Bucal) pela Universidade Federal da Paraíba (UFPB), Aperfeiçoamento em Cirurgia Oral Menor pelo Centro Integrado de Tecnologia e Pesquisa (CINTEP) e Graduação em Odontologia pela UFPB. Foi Professor Adjunto do Curso de Odontologia do Centro Universitário de João Pessoa (UNIPÊ), Diretor da Clínica Escola de Odontologia Afonso Pereira (UNIPÊ) e Professor de Cursos Técnicos na área de Odontologia (CETO). Ingressou como Professor Efetivo no Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) no ano de 2014. Nessa instituição, ocupou o cargo de Diretor de Desenvolvimento do Ensino, Coordenador do Comitê de Ética em Pesquisa e Coordenador de Pesquisa do Campus Monteiro. Atualmente, é docente da Universidade Federal da Paraíba. Além disso, é Membro do Banco de Avaliadores do Sistema Nacional de Avaliação da Educação Superior do Ministério da Educação.",
   },
   {
+    name: "PROF DR EDSON CAMILO",
+    position: "COLABORADOR EXTERNO",
+    curriculum: "Doutor em Engenharia Industrial pela UFBA, mestre em Engenharia de Produção pela Universidade Federal da Paraíba (2004), , Especialista em Banco de Dados (UFAL) e graduado em Física pela Universidade Federal de Alagoas (1992) . Professor do Instituto Federal de Alagoas desde 1996 , atuando principalmente nos seguintes temas: IOT, inteligência artificial, pesquisa operacional, desenvolvimento Web, ciência de dados e banco de dados.  Tem experiência como analista de sistemas em várias empresas por mais de 24 anos.",
+  },
+  {
     name: "GLEYSON DA SILVA XAVIER",
     position: "BOLSISTA",
     curriculum: "Atendimento Pré-hopitalar pela ANDRAE, concluído a disciplina de Primeiros Socorros no Centro Profissional e Tecnológico Escola Técnica de Saúde da Universidade Federal da Paraíba (CPT-ETS-UFPB), cursando o Técnico de Enfermagem pelo Centro Profissional e Tecnológico Escola Técnica de Saúde da Universidade Federal da Paraíba (CPT-ETS-UFPB).",
@@ -42,6 +47,21 @@ export const team = [
     name: "LEANDRO DE MOURA DA SILVA",
     position: "VOLUNTÁRIO",
     curriculum: "Técnico de enfermagem pela Universidade Federal da Paraíba CPT-ETS, Capacitações em Terapia Renal substitutiva: Hemodiálise pela CPT-ETS, Suporte Básico de Vida pela UFRN e pela CTE Saúde, Atendimento Pré-Hospitalar pela CTE Saúde, Feridas e Curativos pela UFRN.",
+  },
+  {
+    name: "SAMUEL VELOSO DE AMORIM",
+    position: "ALUNO COLABORADOR EXTERNO",
+    curriculum: "Graduando em Sistemas de Informação pelo Instituto Federal de Alagoas IFAL - Campus Maceió, Técnico em Informática para Internet pelo Instituto Federal de Alagoas - Campus Rio Largo. Engenheiro de Software Senior. Colaborador da Extensão ‘SOS nas Escolas’ como desenvolvedor do sistema.",
+  },
+  {
+    name: "MARCELO SILVA BERTO DE MELO",
+    position: "ALUNO COLABORADOR EXTERNO",
+    curriculum: "",
+  },
+  {
+    name: "LUELLDO CARLOS LIMA LOPES",
+    position: "ALUNO COLABORADOR EXTERNO",
+    curriculum: "",
   }
 ]
 
