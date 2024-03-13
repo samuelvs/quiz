@@ -22,7 +22,7 @@
   position: fixed;
   display: flex;
   gap: 10px;
-  height: 50px;
+  height: 80px;
   z-index: 8;
   top: 10px;
   left: 10px;
@@ -72,5 +72,16 @@
     flex-direction: column;
     gap: 20px;
     margin: auto;
+  }
+}
+
+
+@media only screen and (max-width: 850px) {
+  .home {
+    width: 100%;
+  }
+
+  :host::before {
+  background: none;
   }
 }

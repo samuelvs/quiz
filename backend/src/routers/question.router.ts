@@ -31,6 +31,7 @@ router.post("/answer", (req, res) => {
 
 const sanitizeInput = (req: any, res: any, next: any) => {
   req.body.name = escape(req.body.name);
+  req.body.age = escape(req.body.age.toString());
   req.body.school = escape(req.body.school);
   req.body.year = escape(req.body.year);
   req.body.state = escape(req.body.state);
@@ -43,6 +44,7 @@ const sanitizeInput = (req: any, res: any, next: any) => {
 
 const validateInput = [
   body('name').isString(),
+  body('age').isNumeric(),
   body('school').isString(),
   body('year').isString(),
   body('state').isString(),
@@ -65,6 +67,7 @@ router.post("/finish", limiter, sanitizeInput, validateInput, async (req: any, r
   try {
     const data = {
       name: req.body.name,
+      age: req.body.age,
       schoolarity: req.body.school,
       year_scholarity: req.body.year,
       state: req.body.state,

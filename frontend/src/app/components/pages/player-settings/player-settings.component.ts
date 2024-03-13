@@ -40,6 +40,7 @@ export class PlayerSettingsComponent {
   ngOnInit(): void {
     this.playerForm = this.fb.group({
       name: ['', [Validators.required]],
+      age: [null, [Validators.required]],
       school: [{}, [Validators.required]],
       year: ['', []],
       state: [{}, [Validators.required]],
