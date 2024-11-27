@@ -10,7 +10,7 @@
   <div *ngIf="isRight !== null"  [@fadeIn]
       class="animation">
     <ng-lottie
-      height="auto"
+      height="500px"
       [options]="quizService.lottieOptions"
       (animationCreated)="quizService.animationAnswerCreated($event)"
     ></ng-lottie>
