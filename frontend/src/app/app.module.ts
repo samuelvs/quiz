@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LoginComponent } from './components/pages/login/login.component';
-import { DashboardComponent } from './components/pages/admin/dashboard/dashboard.component';
+import { AverageBySubjectComponent } from './components/pages/admin/dashboard/subject/average-by-subject.component';
 import { AdminComponent } from './components/pages/admin/admin.component';
 import { LottieModule, provideLottieOptions } from 'ngx-lottie';
 import { UsersComponent } from './components/pages/admin/users/users.component';
@@ -26,6 +26,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ButtonComponent } from './shared/button/button.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ResultComponent } from './components/pages/result/result.component';
+import { PreQuizComponent } from './components/pages/pre-quiz/pre-quiz.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -38,10 +39,10 @@ export function playerFactory() {
     OrientationsComponent,
     TeamComponent,
     PlayerSettingsComponent,
+    PreQuizComponent,
     QuizComponent,
     LoginComponent,
     ButtonComponent,
-    DashboardComponent,
     UsersComponent,
     AdminComponent,
     ResultComponent,

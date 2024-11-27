@@ -17,7 +17,7 @@ export class ResultComponent {
   ngOnInit(): void {
     this.name = this.quizService.player.name.split(' ')[0];
     this.score = this.quizService.getScore();
-    this.average = (this.score / 30) * 100;
+    this.average = parseFloat(((this.score / 30) * 100).toFixed(2));
     this.quizService.reset();
     setTimeout(() => {
       this.showResult = true;

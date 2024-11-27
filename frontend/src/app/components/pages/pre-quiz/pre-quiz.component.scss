@@ -17,14 +17,14 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  max-width: 776px;
+  max-width: 536px;
   flex: 1;
 
   svg {
     margin: 20px;
     overflow: visible;
     height: auto;
-    width: -webkit-fill-available;
+    width: auto;
   }
 }
 

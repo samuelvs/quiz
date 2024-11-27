@@ -1,12 +1,29 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <a class="menu-button"
-      [routerLink]="'/admin/dashboard'"
-      [class.navigation__link--current]="router.url === '/admin/dashboard'"
-    >
-      <mat-icon>dashboard</mat-icon>
-      <span>Dashboard</span>
-    </a>
+    <div class="dashboard">
+      <div class="menu-button" (click)="navigate('media-assunto')">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </div>
+      <a class="menu-button"
+        (click)="navigate('media-assunto')"
+        [class.navigation__link--current]="router.url === '/admin/dashboard/media-assunto'"
+        >
+        <span>Média por assunto</span>
+      </a>
+      <a class="menu-button"
+        (click)="navigate('idade')"
+        [class.navigation__link--current]="router.url === '/admin/dashboard/idade'"
+        >
+        <span>Idade</span>
+      </a>
+      <a class="menu-button"
+        (click)="navigate('evolucao-aprendizado')"
+        [class.navigation__link--current]="router.url === '/admin/dashboard/evolucao-aprendizado'"
+        >
+        <span>Evolução de aprendizado</span>
+      </a>
+  </div>
 
     <mat-divider></mat-divider>
 
@@ -20,7 +37,7 @@
 
     <mat-divider></mat-divider>
 
-    <a class="menu-button"
+    <a class="menu-button logout"
       (click)="logout()"
     >
       <mat-icon>logout</mat-icon>
@@ -31,7 +48,7 @@
   <mat-sidenav-content>
       <div class="content mat-elevation-z8">
         <router-outlet></router-outlet>
-        <router-outlet name="section1"></router-outlet>
+        <!-- <router-outlet name="section1"></router-outlet> -->
       </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

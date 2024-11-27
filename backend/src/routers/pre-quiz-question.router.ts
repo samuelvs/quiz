@@ -3,24 +3,24 @@ const { body, validationResult } = require('express-validator');
 const { sanitize, escape } = require('validator');
 const rateLimit = require("express-rate-limit");
 import { db, admin } from '../firebase';
-import { questions } from '../data';
+import { preQuizQuestions } from '../data';
 import authMid from '../middlewares/auth.mid';
 
 const router = Router();
 
 router.get("/", (req, res) => {
-  const response = questions.map(({ questions, ...rest }) => ({
+  const response = preQuizQuestions.map(({ questions, ...rest }) => ({
     ...rest,
     questions: questions.map(({ answer, ...questionRest }) => questionRest)
   }));
   res.send(response);
 });
   
-router.post("/answer", (req, res) => {
+router.post("/pre-quiz-answer", (req, res) => {
   const subject: number = Number(req.body.subject);
   const question: number = Number(req.body.question);
   const userAnswer: number = Number(req.body.userAnswer);
-  const rightAlternative = questions[subject]?.questions[question]?.answer;
+  const rightAlternative = preQuizQuestions[subject]?.questions[question]?.answer;
   let response = false;
 
   if (userAnswer === rightAlternative) {
@@ -38,7 +38,6 @@ const sanitizeInput = (req: any, res: any, next: any) => {
   req.body.city = escape(req.body.city);
   req.body.character = escape(req.body.character);
   req.body.score = escape(req.body.score);
-  req.body.pre_score = escape(req.body.pre_score);
   
   next();
 };
@@ -51,8 +50,7 @@ const validateInput = [
   body('state').isString(),
   body('city').isString(),
   body('character').isString(),
-  body('score').isString(),
-  body('pre_score').isString()
+  body('score').isString()
 ];
 
 const limiter = rateLimit({
@@ -60,7 +58,7 @@ const limiter = rateLimit({
   max: 10
 });
 
-router.post("/finish", limiter, sanitizeInput, validateInput, async (req: any, res: any) => {
+router.post("/pre-quiz-finish", limiter, sanitizeInput, validateInput, async (req: any, res: any) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ messages: errors.array() });
@@ -75,8 +73,8 @@ router.post("/finish", limiter, sanitizeInput, validateInput, async (req: any, r
       state: req.body.state,
       city: req.body.city,
       character: req.body.character,
-      score: req.body.score,
-      pre_score: req.body.pre_score
+      pre_score: req.body.pre_score,
+      score: req.body.score
     };
 
     await db.collection('scores').add(data);
@@ -86,7 +84,7 @@ router.post("/finish", limiter, sanitizeInput, validateInput, async (req: any, r
   }
 });
 
-router.get("/results", authMid, async (req, res) => {
+router.get("/pre-quiz-results", authMid, async (req, res) => {
   try {
     const scores = await admin.firestore().collection('scores').get();
 

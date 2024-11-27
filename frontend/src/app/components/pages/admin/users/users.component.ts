@@ -21,8 +21,6 @@ export class UsersComponent {
   }
 
   resetUser(userId: string): void {
-    console.log(userId);
-
     this.userService.resetPassword(userId);
   }
 

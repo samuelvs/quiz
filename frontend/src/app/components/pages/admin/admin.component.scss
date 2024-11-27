@@ -7,6 +7,12 @@
 mat-sidenav {
   background: #303030;
   color: white;
+  .dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+  }
 
   .menu-button {
     padding: 15px 80px 15px 12px;
@@ -58,7 +64,7 @@ mat-sidenav-container {
   position: relative;
 }
 
-.menu-button:last-child {
+.logout {
   bottom: 0px;
   width: -webkit-fill-available;
   position: absolute;

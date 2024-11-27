@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
 import { HttpClient } from '@angular/common/http';
-import { ANSWERQUESTION, DASHBOARD, FINALIZE_QUIZ, QUESTIONS } from '../shared/constants/urls';
+import { ANSWERQUESTION, DASHBOARD, FINALIZE_PRE_QUIZ, FINALIZE_QUIZ, PRE_QUIZ_ANSWERQUESTION, PRE_QUIZ_QUESTIONS, QUESTIONS } from '../shared/constants/urls';
 import { Observable, map, tap } from 'rxjs';
 import { Character } from '../shared/interfaces/character.interface';
 import { Router } from '@angular/router';
@@ -13,11 +13,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class QuizService {
   player: Character;
+  private preScore: number[] = [0,0,0,0,0];
   private score: number[] = [0,0,0,0,0];
   private quiz: any = [];
   private pathStars: number[] = [6,12,18,24,30];
   private pathIndex: number = 0;
   private finalPath: number = 30;
+  private finalPreQuiz: number = 10;
   private currentSubject: number = 0;
   private currentQuestion: number = -1;
   private answerAnimationItem: AnimationItem;
@@ -34,6 +36,15 @@ export class QuizService {
 
   constructor(private ngZone: NgZone, private http: HttpClient, private router: Router, private toastrService:ToastrService) {}
 
+  loadPreQuizQuestions(): Observable<boolean> {
+    return this.http.get<boolean>(PRE_QUIZ_QUESTIONS).pipe(
+      map((response: any) => {
+        this.quiz = response;
+        return response;
+      })
+    );
+  }
+
   loadQuestions(): Observable<boolean> {
     return this.http.get<boolean>(QUESTIONS).pipe(
       map((response: any) => {
@@ -45,6 +56,29 @@ export class QuizService {
 
   setPlayer(params: any): void {
     this.player = params;
+  }
+
+  getNextQuestionPreQuiz() {
+    if (this.pathIndex === this.finalPreQuiz) {
+      this.isLoadingResult = true;
+      this.pathIndex = 0;
+      this.currentSubject = 0;
+      this.currentQuestion = -1;
+      this.isLoadingResult = false;
+      this.router.navigate(['/orientacoes']);
+      return;
+    }
+
+    this.pathIndex++;
+    this.currentQuestion++;
+
+    const totalQuestions = this.quiz[this.currentSubject].questions.length;
+    if (this.currentQuestion > totalQuestions - 1) {
+      this.currentSubject++;
+      this.currentQuestion = 0;
+    }
+
+    return this.getQuestion();
   }
 
   getNextQuestion() {
@@ -73,6 +107,25 @@ export class QuizService {
     return this.getQuestion();
   }
 
+  answerPreQuiz(userAnswer: number): Observable<boolean> {
+    const params = {
+      subject: this.currentSubject,
+      question: this.currentQuestion,
+      userAnswer: userAnswer
+    };
+    return this.http.post<boolean>(PRE_QUIZ_ANSWERQUESTION, params).pipe(
+      map((response: boolean) => {
+        if (response) {
+          this.addPreScore();
+          this.hitAnimation();
+        } else {
+          this.mistakeAnimmation();
+        }
+        return response;
+      })
+    );
+  }
+
   answer(userAnswer: number): Observable<boolean> {
     const params = {
       subject: this.currentSubject,
@@ -95,7 +148,8 @@ export class QuizService {
   finish(): Observable<any> {
     const params = {
       ...this.player,
-      score: JSON.stringify(this.score)
+      score: JSON.stringify(this.score),
+      pre_score: JSON.stringify(this.preScore)
     };
 
     return this.http.post(FINALIZE_QUIZ, params);
@@ -109,6 +163,7 @@ export class QuizService {
   reset() {
     this.setPlayer({});
     this.score = [0,0,0,0,0];
+    this.preScore = [0,0,0,0,0];
     this.pathIndex = 0;
     this.currentSubject = 0;
     this.currentQuestion = -1;
@@ -130,6 +185,10 @@ export class QuizService {
     );
   }
 
+  addPreScore(): void {
+    this.preScore[this.currentSubject]++;
+  }
+
   addScore(): void {
     this.score[this.currentSubject]++;
   }
@@ -148,6 +207,11 @@ export class QuizService {
 
   getPathIndex(): number {
     return this.pathIndex;
+  }
+
+  getQuestionNumberPreQuiz(): number {
+    const totalSubjects = 2;
+    return this.currentSubject * totalSubjects + (this.currentQuestion + 1);
   }
 
   getQuestionNumber(): number {
@@ -179,10 +243,12 @@ export class QuizService {
 
   hitAnimation(): void {
     const block = document.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
-    block.classList.add('right');
-    block?.setAttribute('stroke', '#37B42C');
-    const star = document.getElementById(`star${this.getPathIndex()}`) as HTMLElement;
-    star.style.display = 'block';
+    if (block) {
+      block.classList.add('right');
+      block?.setAttribute('stroke', '#37B42C');
+      const star = document.getElementById(`star${this.getPathIndex()}`) as HTMLElement;
+      star.style.display = 'block';
+    }
 
     const audio = new Audio('../../assets/sounds/right.mp3');
     audio.play();
@@ -192,10 +258,12 @@ export class QuizService {
 
   mistakeAnimmation(): void {
     const block = document.getElementById(`block${this.getPathIndex()}`) as HTMLElement;
-    block.classList.add('mistake');
-    block?.setAttribute('stroke', '#F23208');
-    const star = document.getElementById(`wrong${this.getPathIndex()}`) as HTMLElement;
-    star.style.display = 'block';
+    if (block) {
+      block.classList.add('mistake');
+      block?.setAttribute('stroke', '#F23208');
+      const star = document.getElementById(`wrong${this.getPathIndex()}`) as HTMLElement;
+      star.style.display = 'block';
+    }
 
     const audio = new Audio('../../assets/sounds/wrong.mp3');
     audio.play();
