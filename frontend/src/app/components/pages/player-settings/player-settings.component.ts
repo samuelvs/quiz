@@ -58,6 +58,6 @@ export class PlayerSettingsComponent {
     params.school = params.school.name;
     params.state = params.state.name;
     this.quiz.setPlayer(params);
-    this.route.navigate(['/pre-quiz']);
+    this.route.navigate(['/info-pre-quiz']);
   }
 }

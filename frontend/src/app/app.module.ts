@@ -27,6 +27,7 @@ import { ButtonComponent } from './shared/button/button.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ResultComponent } from './components/pages/result/result.component';
 import { PreQuizComponent } from './components/pages/pre-quiz/pre-quiz.component';
+import { InfoPreQuizComponent } from './components/pages/info-pre-quiz/info-pre-quiz.component';
 
 export function playerFactory() {
   return import('lottie-web');
@@ -39,6 +40,7 @@ export function playerFactory() {
     OrientationsComponent,
     TeamComponent,
     PlayerSettingsComponent,
+    InfoPreQuizComponent,
     PreQuizComponent,
     QuizComponent,
     LoginComponent,

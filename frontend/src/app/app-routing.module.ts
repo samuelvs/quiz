@@ -15,11 +15,13 @@ import { UsersComponent } from './components/pages/admin/users/users.component';
 import { PreQuizComponent } from './components/pages/pre-quiz/pre-quiz.component';
 import { AgeComponent } from './components/pages/admin/dashboard/age/age.component';
 import { ComparativeComponent } from './components/pages/admin/dashboard/comparative/comparative.component';
+import { InfoPreQuizComponent } from './components/pages/info-pre-quiz/info-pre-quiz.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'equipe', component: TeamComponent },
   { path: 'jogador', component: PlayerSettingsComponent },
+  { path: 'info-pre-quiz', component: InfoPreQuizComponent, canActivate:[QuizGuard] },
   { path: 'pre-quiz', component: PreQuizComponent, canActivate:[QuizGuard] },
   { path: 'orientacoes', component: OrientationsComponent },
   { path: 'quiz', component: QuizComponent, canActivate:[QuizGuard] },
