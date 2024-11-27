@@ -275,3 +275,132 @@ export const questions = [
     ]
   }
 ];
+
+
+export const preQuizQuestions = [
+  {
+    "subject": "RCP ADULTO E BEBÊ",
+    "questions": [
+      {
+        "statement": "O que você deve avaliar primeiro ao encontrar uma vítima caída no chão?",
+        "alternatives": [
+          "Verificar se há documentos, como identidade, e chamá-la pelo nome.",
+          "Checar se o ambiente é seguro para começar o atendimento.",
+          "Iniciar imediatamente o atendimento sem avaliar o que está acontecendo.",
+          "Esperar que outra pessoa inicie o atendimento de primeiros socorros."
+        ],
+        "answer": 1
+      },
+      {
+        "statement": "Qual a principal ação a ser tomada ao encontrar uma vítima de PCR - Parada Cardiorrespiratória sem um DEA disponível?",
+        "alternatives": [
+          "Iniciar compressões torácicas imediatamente, realizando 100 a 120 por minuto.",
+          "Realizar respiração boca a boca.",
+          "Esperar que uma ambulância chegue e faça os procedimentos.",
+          "Procurar por equipamentos de ventilação antes de iniciar qualquer ação."
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "subject": "DESENGASGO ADULTO E BEBÊ",
+    "questions": [
+      {
+        "statement": "Como você deve agir ao perceber que alguém está engasgado?",
+        "alternatives": [
+          "Iniciar imediatamente compressões torácicas.",
+          "Oferecer água para tentar desobstruir as vias aéreas.",
+          "Fazer uma varredura para tentar retirar o objeto que está obstruindo.",
+          "Tentar fazer a pessoa tossir com força.",
+        ],
+        "answer": 3
+      },
+      {
+        "statement": "Quais são os sinais de que a desobstrução das vias aéreas foi bem-sucedida em uma criança?",
+        "alternatives": [
+          "Ela apresenta suor frio e dificuldade para respirar.",
+          "A criança fica mais quieta e alerta.",
+          "A criança começa a tossir e respirar normalmente.",
+          "Ela fica visivelmente mais calma, mas sem sinais de respiração."
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "subject": "HEMORRAGIA",
+    "questions": [
+      {
+        "statement": "Como agir diante de um sangramento intenso?",
+        "alternatives": [
+          "Aplicar pressão direta sobre a ferida com um pano limpo.",
+          "Deixar o sangue fluir para limpar a ferida.",
+          "Aguardar a ajuda de um profissional de saúde.",
+          "Tentar aplicar um curativo improvisado sem pressionar."
+        ],
+        "answer": 0
+      },
+      {
+        "statement": "O que fazer quando há um objeto encravado em uma ferida?",
+        "alternatives": [
+          "Tentar retirar o objeto imediatamente.",
+          "Aplicar gelo para reduzir o sangramento.",
+          "Esperar até que a ajuda profissional chegue para retirar o objeto.",
+          "Deixar o objeto no lugar e aplicar pressão ao redor da ferida.",
+        ],
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "subject": "CONVULSÃO",
+    "questions": [
+      {
+        "statement": "Qual a principal medida a ser tomada durante uma convulsão?",
+        "alternatives": [
+          "Segurar a língua da pessoa para evitar mordidas.",
+          "Tentar imobilizar os membros da pessoa para evitar movimentos.",
+          "Proteger a cabeça da pessoa afastando objetos ao redor.",
+          "Forçar a pessoa a beber água para se acalmar."
+        ],
+        "answer": 2
+      },
+      {
+        "statement": "O que fazer após uma pessoa sofrer uma convulsão?",
+        "alternatives": [
+          "Colocar a pessoa em posição lateral de segurança e observar a respiração.",
+          "Tentar acordá-la com estímulos táteis.",
+          "Administrar água ou alimentos para repor a energia.",
+          "Deixar a pessoa em posição sentada para se recuperar mais rápido."
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  {
+    "subject": "FRATURA",
+    "questions": [
+      {
+        "statement": "O que fazer ao perceber que alguém sofreu uma queda e pode ter fraturado um membro?",
+        "alternatives": [
+          "Tentar levantar a pessoa e verificar a extensão da lesão.",
+          "Chamar imediatamente uma ambulância e não movimentar a vítima.",
+          "Imobilizar a área fraturada com qualquer material disponível.",
+          "Esperar a pessoa se levantar sozinha e observar se há dor."
+        ],
+        "answer": 1
+      },
+      {
+        "statement": "Como proceder ao imobilizar uma fratura no braço?",
+        "alternatives": [
+          "Imobilizar o braço na posição em que se encontra e chamar ajuda.",
+          "Tentar alinhar o osso quebrado para diminuir a dor antes de imobilizar.",
+          "Imobilizar somente a articulação afetada, sem necessidade de imobilizar o restante do braço.",
+          "Aplicar compressas quentes no local da fratura antes de imobilizar."
+        ],
+        "answer": 0
+      }
+    ]
+  }
+]

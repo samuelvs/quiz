@@ -1,0 +1,50 @@
+<div *ngIf="quizService.isLoadingResult" class="loading">
+  <div class="spinner-content">
+    <span class="spinner"></span>
+    <img class="gif" [src]="'../../assets/animations/' + quizService.player.character + '.gif'" alt="Animated GIF">
+  </div>
+  <p>Salvando informações...</p>
+</div>
+
+<!-- <div *ngIf="isRight !== null"  [@fadeIn]
+      class="animation">
+    <ng-lottie
+      height="auto"
+      [options]="quizService.lottieOptions"
+      (animationCreated)="quizService.animationAnswerCreated($event)"
+    ></ng-lottie>
+    <p class="message" *ngIf="isRight === true">Parabéns {{ quizService.player.name.split(' ')[0] }}, você acertou mais uma questão!</p>
+    <p class="message" *ngIf="isRight === false">Você errou essa questão, continue o jogo!</p>
+</div> -->
+
+<div class="question">
+  <div class="alternatives">
+    <p class="title">QUESTÃO {{quizService.getQuestionNumberPreQuiz()}} DE 10</p>
+    <p class="statement">{{question?.statement}}</p>
+    <span *ngFor="let questionItem of question?.alternatives; let i = index"
+      class="alternative"
+      [ngClass]="{
+        'alternative-selected': alternativeSelected === i,
+        'hit': alternativeSelected === i && isRight === true,
+        'mistake': alternativeSelected === i && isRight === false,
+        'blocked': isRight === true || isRight === false
+      }"
+      (click)="selectAlternative(i)">
+      <p>{{questionItem}}</p>
+    </span>
+  </div>
+
+  <quiz-button *ngIf="isRight === null && alternativeSelected !== null"
+    (click)="answer()"
+    text="Responder"
+    color="green">
+  </quiz-button>
+
+  <quiz-button
+    *ngIf="isRight !== null"
+    [class.button__animation]="isRight !== null"
+    (click)="next()"
+    text="Continuar"
+    color="green">
+  </quiz-button>
+</div>

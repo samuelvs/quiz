@@ -45,7 +45,9 @@
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 100%;
+  height: 64%;
+  justify-self: center;
+  justify-content: center;
 
   .home-content {
     display: flex;
@@ -65,6 +67,10 @@
       width: 60%;
       text-align: center;
     }
+  }
+
+  quiz-button {
+    margin-top: 16px;
   }
 
   &__bottom-buton {
